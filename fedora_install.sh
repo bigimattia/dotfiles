@@ -117,8 +117,11 @@ if [[ "$set_gnome_keybinds" == "y" ]]; then
     ./scripts/gnome-keybinds.sh
 fi
 
-# Ask if the user wants to set up the 65x keyboard FN keys fix
-echo "Do you want to set up the 65x keyboard FN keys fix? (y/n)"
+# Ask if the user wants to set up the 65% keyboard FN keys fix
+echo "Since some 65% keyboards defaults to fn keys"
+echo "triggering special keys instead of F1-F12 keys,"
+echo "Do you want to set up the 65% keyboard FN keys fix? (y/n)"
+echo "[skip if you don't have a 65% keyboard]"
 read -r set_65x_fn_keys
 if [[ "$set_65x_fn_keys" == "y" ]]; then
     ./scripts/65x-fn-keys-fix.sh
