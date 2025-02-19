@@ -26,7 +26,7 @@ runScript() {
     if [ ! -x "$script_path" ]; then
         chmod +x "$script_path"
     fi
-    "$script_path"
+    source "$script_path"
 }
 
 # Remove Fedora Flatpak repository if present
@@ -114,14 +114,14 @@ if [[ "$install_zsh" == "y" ]]; then
     fi
 
     # Run the install.sh script
-    runScript ./scripts/zsh.setup.sh
+    runScript scripts/zsh.setup.sh
 fi
 
 # Ask if the user wants to set GNOME keybinds
 echo "Do you want to set GNOME keybinds? (y/n)"
 read -r set_gnome_keybinds
 if [[ "$set_gnome_keybinds" == "y" ]]; then
-    runScript ./scripts/gnome-keybinds.sh
+    runScript scripts/gnome-keybinds.sh
 fi
 
 # Ask if the user wants to set up the 65% keyboard FN keys fix
@@ -131,8 +131,7 @@ echo "Do you want to set up the 65% keyboard FN keys fix? (y/n)"
 echo "[skip if you don't have a 65% keyboard]"
 read -r set_65x_fn_keys
 if [[ "$set_65x_fn_keys" == "y" ]]; then
-    runScript ./scripts/65x-fn-keys-fix.sh
-
+    runScript scripts/65x-fn-keys-fix.sh
 fi
 
 # Ask if the user wants to set up git
