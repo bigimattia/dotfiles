@@ -63,3 +63,6 @@ flatpak install flathub org.gnome.Showtime -y
 
 # Update the system
 sudo dnf upgrade -y
+
+# Run the install.sh script
+./install.sh
