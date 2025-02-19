@@ -9,8 +9,6 @@ read -p "Do you want a minimal install? (y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     MINIMAL_INSTALL=true
-    > ~/.zsh/plugin.zsh
-
     read -p "Do you want to install autosuggestions? (y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
