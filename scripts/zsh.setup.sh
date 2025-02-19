@@ -1,6 +1,6 @@
 #!/bin/bash
-cp .zshrc ~/
-cp -r .zsh ~/.zsh
+cp ../.zshrc ~/
+cp -r ../.zsh ~/.zsh
 
 MINIMAL_INSTALL=false
 INSTALL_AUTOSUGGESTIONS=false
