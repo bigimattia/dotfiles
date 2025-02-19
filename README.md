@@ -19,8 +19,10 @@ cd dotfiles
 
 To run the install scripts, execute the following command:
 
+### fedora:
 ```sh
-./install.sh
+chmod +x fedora_install.sh
+./fedora_install.sh
 ```
 
 This will set up your environment according to the configurations specified in the repository.
