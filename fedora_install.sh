@@ -22,8 +22,6 @@ fi
 
 # MAIN
 
-sudo dnf install zsh -y
-
 # Remove Fedora Flatpak repository if present
 flatpak remote-delete fedora
 
@@ -31,8 +29,6 @@ flatpak remote-delete fedora
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 # user as well
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# Remove Fedora Workstation apps
 
 # Remove Fedora Workstation apps
 apps_to_remove=(
@@ -62,7 +58,11 @@ apps_to_remove=(
     totem
 )
 
-sudo dnf remove -y "${apps_to_remove[@]}"
+echo "Do you want to remove the default Fedora Workstation apps? (y/n)"
+read -r remove_apps
+if [[ "$remove_apps" == "y" ]]; then
+    sudo dnf remove -y "${apps_to_remove[@]}"
+fi
 
 # Install Fedora Workstation apps as Flatpak
 apps=(
@@ -85,12 +85,84 @@ apps=(
     org.mozilla.firefox
 )
 
-for app in "${apps[@]}"; do
-    flatpak install flathub "$app" -y
-done
+echo "Do you want to install the Fedora Workstation apps as Flatpak? (y/n)"
+read -r install_flatpaks
+if [[ "$install_flatpaks" == "y" ]]; then
+    for app in "${apps[@]}"; do
+        flatpak install flathub "$app" -y
+    done
+fi
+
+# Ask if the user wants to install zsh
+echo "Do you want to install and setup zsh? (y/n)"
+read -r install_zsh
+if [[ "$install_zsh" == "y" ]]; then
+    sudo dnf install zsh -y
+
+    # Ask if the user wants to set zsh as the default shell
+    echo "Do you want to set zsh as the default shell? (y/n)"
+    read -r set_zsh_default
+    if [[ "$set_zsh_default" == "y" ]]; then
+        chsh -s $(which zsh)
+    fi
+
+    # Run the install.sh script
+    ./scripts/zsh.setup.sh
+fi
+
+# Ask if the user wants to set GNOME keybinds
+echo "Do you want to set GNOME keybinds? (y/n)"
+read -r set_gnome_keybinds
+if [[ "$set_gnome_keybinds" == "y" ]]; then
+    ./scripts/gnome-keybinds.sh
+fi
+
+# Ask if the user wants to set up the 65x keyboard FN keys fix
+echo "Do you want to set up the 65x keyboard FN keys fix? (y/n)"
+read -r set_65x_fn_keys
+if [[ "$set_65x_fn_keys" == "y" ]]; then
+    ./scripts/65x-fn-keys-fix.sh
+fi
+
+# Ask if the user wants to set up git
+echo "Do you want to set up git? (y/n)"
+read -r setup_git
+if [[ "$setup_git" == "y" ]]; then
+    echo "Enter your git email:"
+    read -r git_email
+    echo "Enter your git username:"
+    read -r git_username
+
+    git config --global user.email "$git_email"
+    git config --global user.name "$git_username"
+
+    ssh-keygen -t ed25519 -C "$git_email"
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519
+    echo "Add the following SSH key to your GitHub account:"
+    cat ~/.ssh/id_ed25519.pub
+    echo "Press any key to continue..."
+    read -n 1 -s
+fi
+
+# Ask if the user wants to enable multiprofile Bluetooth
+echo "Do you want to enable multiprofile Bluetooth? (y/n)"
+read -r enable_multiprofile_bt
+if [[ "$enable_multiprofile_bt" == "y" ]]; then
+    sudo sed -i 's/#MultiProfile = off/MultiProfile = multiple/' /etc/bluetooth/main.conf
+    echo "Multiprofile Bluetooth has been enabled."
+fi
 
 # Update the system
 sudo dnf upgrade -y
 
-# Run the install.sh script
-./install.sh
+# Ask if the user wants to reboot the system now
+echo "Do you want to reboot the system now? (y/n)"
+read -r reboot_now
+if [[ "$reboot_now" == "y" ]]; then
+    sudo reboot
+else
+    echo "Please reboot your system as soon as possible to apply all changes."
+fi
+
+echo "Have a nice day!"
