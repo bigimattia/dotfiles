@@ -1,6 +1,15 @@
 #!/bin/bash
-cp ../.zshrc ~/
-cp -r ../.zsh ~/.zsh
+if [ -f .zshrc ]; then
+    cp .zshrc ~/
+else
+    echo "File .zshrc does not exist."
+fi
+
+if [ -d .zsh ]; then
+    cp -r .zsh ~/.zsh
+else
+    echo "Directory .zsh does not exist."
+fi
 
 firaCodeVersion="v3.3.0"
 firaCodeUrl="https://github.com/ryanoasis/nerd-fonts/releases/download/$firaCodeVersion/FiraCode.zip"
@@ -61,7 +70,7 @@ if [[ $INSTALL_NVM == true || $MINIMAL_INSTALL == false ]]; then
 fi
 
 install_firacode_nerd_font() {
-    local font_dir="$HOME/.local/share/fonts"
+    local font_dir="~/.local/share/fonts"
     mkdir -p "$font_dir"
     curl -fLo "$font_dir/FiraCode.zip" $firaCodeUrl
     unzip "$font_dir/FiraCode.zip" -d "$font_dir"
@@ -75,9 +84,13 @@ fi
 
 # starship MUST be last line in the .zshrc file
 if [[ $INSTALL_STARSHIP == true || $MINIMAL_INSTALL == false ]]; then
-    sh -c "$(curl -sS https://starship.rs/install.sh)"
     echo "# starship" >> ~/.zshrc
     echo "eval \"\$(starship init zsh)\"" >> ~/.zshrc
+    if [ -f /usr/local/bin/starship ]; then
+        echo "Starship is already installed."
+    else
+        sh -c "$(curl -sS https://starship.rs/install.sh)"
+    fi
 elif [[ $INSTALL_THEME_MINIMAL == true ]]; then
     echo "# theme minimal" >> ~/.zsh/plugin.zsh
     echo "source \$ZSH/plugins/theme.minimal.zsh" >> ~/.zsh/plugin.zsh
