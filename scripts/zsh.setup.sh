@@ -1,12 +1,12 @@
 #!/bin/bash
 if [ -f .zshrc ]; then
-    cp .zshrc ~/
+    cp dotfiles/.zshrc ~/
 else
     echo "File .zshrc does not exist."
 fi
 
 if [ -d .zsh ]; then
-    cp -r .zsh ~/
+    cp -r dotfiles/.zsh ~/
 else
     echo "Directory .zsh does not exist."
 fi
@@ -82,7 +82,7 @@ fi
 install_firacode_nerd_font() {
     local font_dir="$HOME/.local/share/fonts/FiraCodeNerdFont" # ~ operator does not expand in the string
     mkdir -p "$font_dir"
-    curl -OL "$font_dir/FiraCode.zip" $firaCodeUrl
+    curl -oL "$font_dir/FiraCode.zip" $firaCodeUrl
     unzip "$font_dir/FiraCode.zip" -d "$font_dir"
     fc-cache -fv
     rm "$font_dir/FiraCode.zip"
