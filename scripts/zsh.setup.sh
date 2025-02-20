@@ -6,7 +6,7 @@ else
 fi
 
 if [ -d .zsh ]; then
-    cp -r .zsh ~/.zsh
+    cp -r .zsh ~/
 else
     echo "Directory .zsh does not exist."
 fi
@@ -58,40 +58,55 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 if [[ $INSTALL_AUTOSUGGESTIONS == true || $MINIMAL_INSTALL == false ]]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-    echo "# zsh-autosuggestions" >> ~/.zsh/plugin.zsh
-    echo "source \$ZSH/plugins/zsh-autosuggestions.zsh" >> ~/.zsh/plugin.zsh
+    echo "# zsh-autosuggestions" >> ~/.zsh/plugins.zsh
+    echo "source \$ZSH/plugins/zsh-autosuggestions.zsh" >> ~/.zsh/plugins.zsh
+
+    if [ -d ~/.zsh/zsh-autosuggestions ]; then
+        echo "zsh-autosuggestions is already installed."
+    else
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    fi   
 fi
 
 if [[ $INSTALL_NVM == true || $MINIMAL_INSTALL == false ]]; then
-    PROFILE=/dev/null bash -c "curl -o- $nvmUrl | bash"
-    echo "# nvm" >> ~/.zsh/plugin.zsh
-    echo "source \$ZSH/plugins/nvm.zsh" >> ~/.zsh/plugin.zsh
+    echo "# nvm" >> ~/.zsh/plugins.zsh
+    echo "source \$ZSH/plugins/nvm.zsh" >> ~/.zsh/plugins.zsh
+
+    if [ -d ~/.nvm ]; then
+        echo "NVM is already installed."
+    else
+        PROFILE=/dev/null bash -c "curl -o- $nvmUrl | bash"
+    fi
 fi
 
 install_firacode_nerd_font() {
-    local font_dir="~/.local/share/fonts"
+    local font_dir="$HOME/.local/share/fonts/FiraCodeNerdFont" # ~ operator does not expand in the string
     mkdir -p "$font_dir"
-    curl -fLo "$font_dir/FiraCode.zip" $firaCodeUrl
+    curl -OL "$font_dir/FiraCode.zip" $firaCodeUrl
     unzip "$font_dir/FiraCode.zip" -d "$font_dir"
     fc-cache -fv
     rm "$font_dir/FiraCode.zip"
 }
 
 if [[ $INSTALL_FIRACODE == true || $MINIMAL_INSTALL == false ]]; then
-    install_firacode_nerd_font
+    if [ -d ~/.local/share/fonts/FiraCodeNerdFont ]; then
+        echo "FiraCodeFonts is already installed."
+    else
+        install_firacode_nerd_font
+    fi
 fi
 
 # starship MUST be last line in the .zshrc file
 if [[ $INSTALL_STARSHIP == true || $MINIMAL_INSTALL == false ]]; then
     echo "# starship" >> ~/.zshrc
     echo "eval \"\$(starship init zsh)\"" >> ~/.zshrc
+    
     if [ -f /usr/local/bin/starship ]; then
         echo "Starship is already installed."
     else
         sh -c "$(curl -sS https://starship.rs/install.sh)"
     fi
 elif [[ $INSTALL_THEME_MINIMAL == true ]]; then
-    echo "# theme minimal" >> ~/.zsh/plugin.zsh
-    echo "source \$ZSH/plugins/theme.minimal.zsh" >> ~/.zsh/plugin.zsh
+    echo "# theme minimal" >> ~/.zsh/plugins.zsh
+    echo "source \$ZSH/plugins/theme.minimal.zsh" >> ~/.zsh/plugins.zsh
 fi

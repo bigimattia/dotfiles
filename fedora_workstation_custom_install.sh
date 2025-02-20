@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Ask for sudo privileges
-if [ "$EUID" -ne 0 ]; then
-    echo "This script requires sudo privileges. Please run with sudo."
+# Check if running as root. If root, script will exit
+if [[ $EUID -eq 0 ]]; then
+    echo "${ERROR}  This script should ${WARNING}NOT${RESET} be executed as root!! Exiting......."
+    printf "\n%.0s" {1..2} 
     exit 1
 fi
 
@@ -29,13 +30,17 @@ runScript() {
     source "$script_path"
 }
 
-# Remove Fedora Flatpak repository if present
-flatpak remote-delete fedora
-
-# Add Flathub repository if not already present
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-# user as well
-flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+# Ask if the user wants to remove Fedora Flatpak repository and add Flathub
+echo "Do you want to remove the Fedora Flatpak repository and add Flathub? (y/n)"
+read -r configure_flatpak
+if [[ "$configure_flatpak" == "y" ]]; then
+    # Remove Fedora Flatpak repository if present
+    flatpak remote-delete fedora
+    # Add Flathub repository if not already present
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    # user as well
+    flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+fi
 
 # Remove Fedora Workstation apps
 apps_to_remove=(
@@ -68,7 +73,7 @@ apps_to_remove=(
 echo "Do you want to remove the default Fedora Workstation apps? (y/n)"
 read -r remove_apps
 if [[ "$remove_apps" == "y" ]]; then
-    sudo dnf remove -y "${apps_to_remove[@]}"
+    sudo dnf remove "${apps_to_remove[@]}" -y
 fi
 
 # Install Fedora Workstation apps as Flatpak
