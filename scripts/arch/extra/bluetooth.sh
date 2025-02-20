@@ -1,4 +1,4 @@
-source util.sh
+source ../util.sh
 
 bluetoothList=(
   bluez
@@ -13,6 +13,6 @@ printf "Installing Bluetooth Packages...\n"
   done
 
 printf " Activating Bluetooth Services...\n"
-sudo systemctl enable --now bluetooth.service 2>&1
+sudo systemctl enable --now bluetooth.service
 
 printf "\n%.0s" {1..2}
