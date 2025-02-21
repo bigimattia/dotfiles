@@ -85,7 +85,9 @@ install_firacode_nerd_font() {
     curl -oL "$font_dir/FiraCode.zip" $firaCodeUrl
     unzip "$font_dir/FiraCode.zip" -d "$font_dir"
     fc-cache -fv
-    rm "$font_dir/FiraCode.zip"
+    if [ -f "$font_dir/FiraCode.zip" ]; then
+        rm "$font_dir/FiraCode.zip"
+    fi
 }
 
 if [[ $INSTALL_FIRACODE == true || $MINIMAL_INSTALL == false ]]; then
