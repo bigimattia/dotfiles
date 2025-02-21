@@ -1,4 +1,4 @@
-source ../util.sh
+source scripts/arch/util.sh
 
 pipewire=(
     pipewire

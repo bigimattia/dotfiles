@@ -2,7 +2,7 @@
 install_package() {
   # TODO 
   if pacman -Q "$1" &>/dev/null ; then
-    echo -e "${INFO} ${MAGENTA}$1${RESET} is already installed. Skipping..."
+    echo -e "$1 is already installed. Skipping..."
   else
     stdbuf -oL sudo pacman -S --noconfirm "$1"
     # Double check if package is installed
