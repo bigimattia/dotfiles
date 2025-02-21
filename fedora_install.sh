@@ -162,6 +162,10 @@ fi
 
 # Ask if the user wants to enable multiprofile Bluetooth
 echo "Do you want to enable multiprofile Bluetooth? (y/n)"
+echo "PLEASE NOTE: This will enable the ability to connect to multiple Bluetooth profiles at the same time."
+echo "This may cause issues with some devices."
+echo "Only enable if you know what you are doing."
+echo " !! WARN !! READ ABOVE !! WARN !!" 
 read -r enable_multiprofile_bt
 if [[ "$enable_multiprofile_bt" == "y" ]]; then
     sudo sed -i 's/#MultiProfile = off/MultiProfile = multiple/' /etc/bluetooth/main.conf
