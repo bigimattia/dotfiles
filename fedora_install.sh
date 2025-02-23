@@ -51,6 +51,7 @@ if [[ "$DE" == *"gnome"* ]]; then
     runScript scripts/fedora/fedora.gnome.setup.sh
 elif [[ "$DE" == *"kde"* ]]; then
     echo "You are running KDE Desktop Environment."
+    runScript scripts/fedora/fedora.kde.setup.sh
 else
     echo "You are running an unsupported Desktop Environment."
     exit 1
