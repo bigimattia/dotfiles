@@ -42,67 +42,28 @@ if [[ "$configure_flatpak" == "y" ]]; then
     flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 fi
 
-# Remove Fedora Workstation apps
-apps_to_remove=(
-    abrt-desktop
-    baobab
-    evince
-    fedora-bookmarks
-    firefox
-    gnome-boxes
-    gnome-calculator
-    gnome-calendar
-    gnome-characters
-    gnome-clocks
-    gnome-connections
-    gnome-contacts
-    gnome-font-viewer
-    gnome-initial-setup
-    gnome-logs
-    gnome-maps
-    gnome-text-editor
-    gnome-weather
-    libreoffice-core
-    loupe
-    mediawriter
-    rhythmbox
-    simple-scan
-    totem
-)
+# Check if the user is running GNOME or KDE
+DE=$(echo "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')
 
-echo "Do you want to remove the default Fedora Workstation apps? (y/n)"
-read -r remove_apps
-if [[ "$remove_apps" == "y" ]]; then
-    sudo dnf remove "${apps_to_remove[@]}" -y
+if [[ "$DE" == *"gnome"* ]]; then
+    echo "You are running GNOME Desktop Environment."
+    runScript scripts/gnome.setup.sh
+    runScript scripts/fedora/fedora.gnome.setup.sh
+elif [[ "$DE" == *"kde"* ]]; then
+    echo "You are running KDE Desktop Environment."
+else
+    echo "You are running an unsupported Desktop Environment."
+    exit 1
 fi
 
-# Install Fedora Workstation apps as Flatpak
-apps=(
-    org.gnome.baobab
-    org.gnome.Calendar
-    org.gnome.Calculator
-    org.gnome.Characters
-    org.gnome.Clocks
-    org.gnome.Connections
-    org.gnome.Contacts
-    org.gnome.font-viewer
-    org.gnome.Logs
-    org.gnome.Loupe
-    org.gnome.Maps
-    org.gnome.Papers
-    org.gnome.Showtime
-    org.gnome.SimpleScan
-    org.gnome.TextEditor
-    org.gnome.Weather
-    org.mozilla.firefox
-)
-
-echo "Do you want to install the Fedora Workstation apps as Flatpak? (y/n)"
-read -r install_flatpaks
-if [[ "$install_flatpaks" == "y" ]]; then
-    for app in "${apps[@]}"; do
-        flatpak install flathub "$app" -y
-    done
+# Ask if the user wants to set up the 65% keyboard FN keys fix
+echo "Since some 65% keyboards defaults to fn keys"
+echo "triggering special keys instead of F1-F12 keys,"
+echo "Do you want to set up the 65% keyboard FN keys fix? (y/n)"
+echo "[skip if you don't have a 65% keyboard]"
+read -r set_65x_fn_keys
+if [[ "$set_65x_fn_keys" == "y" ]]; then
+    runScript scripts/65x-fn-keys-fix.sh
 fi
 
 # Ask if the user wants to install zsh
@@ -120,23 +81,6 @@ if [[ "$install_zsh" == "y" ]]; then
 
     # Run the install.sh script
     runScript scripts/zsh.setup.sh
-fi
-
-# Ask if the user wants to set GNOME keybinds
-echo "Do you want to set GNOME keybinds? (y/n)"
-read -r set_gnome_keybinds
-if [[ "$set_gnome_keybinds" == "y" ]]; then
-    runScript scripts/gnome-keybinds.sh
-fi
-
-# Ask if the user wants to set up the 65% keyboard FN keys fix
-echo "Since some 65% keyboards defaults to fn keys"
-echo "triggering special keys instead of F1-F12 keys,"
-echo "Do you want to set up the 65% keyboard FN keys fix? (y/n)"
-echo "[skip if you don't have a 65% keyboard]"
-read -r set_65x_fn_keys
-if [[ "$set_65x_fn_keys" == "y" ]]; then
-    runScript scripts/65x-fn-keys-fix.sh
 fi
 
 # Ask if the user wants to set up git

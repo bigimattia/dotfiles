@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ -f .zshrc ]; then
     cp dotfiles/.zshrc ~/
 else
