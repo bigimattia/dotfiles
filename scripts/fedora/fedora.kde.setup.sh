@@ -2,11 +2,14 @@
 
 apps_to_remove=(
     mediawriter
+    kwrite
+    abrt-desktop
 )
 
 # Install flatpak apps
 flatpak_apps=(
     org.mozilla.firefox
+    org.kde.kwrite
     org.mozilla.Thunderbird
     org.libreoffice.LibreOffice
 )
