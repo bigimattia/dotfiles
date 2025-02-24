@@ -1,19 +1,19 @@
 #!/bin/bash
 
-if [ -f .zshrc ]; then
+if [ -f dotfiles/.zshrc ]; then
     cp dotfiles/.zshrc ~/
 else
     echo "File .zshrc does not exist."
 fi
 
-if [ -d .zsh ]; then
+if [ -d dotfiles/.zsh ]; then
     cp -r dotfiles/.zsh ~/
 else
     echo "Directory .zsh does not exist."
 fi
 
 firaCodeVersion="v3.3.0"
-firaCodeUrl="https://github.com/ryanoasis/nerd-fonts/releases/download/$firaCodeVersion/FiraCode.zip"
+firaCodeUrl="https://github.com/ryanoasis/nerd-fonts/releases/download/${firaCodeVersion}/FiraCode.zip"
 nvmVersion="v0.40.1"
 nvmUrl="https://raw.githubusercontent.com/nvm-sh/nvm/$nvmVersion/install.sh"
 
@@ -83,7 +83,7 @@ fi
 install_firacode_nerd_font() {
     local font_dir="$HOME/.local/share/fonts/FiraCodeNerdFont" # ~ operator does not expand in the string
     mkdir -p "$font_dir"
-    curl -oL "$font_dir/FiraCode.zip" $firaCodeUrl
+    curl -oL "$font_dir/FiraCode.zip" "$firaCodeUrl"
     unzip "$font_dir/FiraCode.zip" -d "$font_dir"
     fc-cache -fv
     if [ -f "$font_dir/FiraCode.zip" ]; then

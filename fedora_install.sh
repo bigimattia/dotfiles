@@ -64,7 +64,7 @@ echo "Do you want to set up the 65% keyboard FN keys fix? (y/n)"
 echo "[skip if you don't have a 65% keyboard]"
 read -r set_65x_fn_keys
 if [[ "$set_65x_fn_keys" == "y" ]]; then
-    runScript scripts/65x-fn-keys-fix.sh
+    runScript scripts/65x-keyboard.setup.sh
 fi
 
 # Ask if the user wants to install zsh
