@@ -82,12 +82,17 @@ fi
 
 install_firacode_nerd_font() {
     local font_dir="$HOME/.local/share/fonts/FiraCodeNerdFont" # ~ operator does not expand in the string
-    mkdir -p "$font_dir"
-    curl -oL "$font_dir/FiraCode.zip" "$firaCodeUrl"
-    unzip "$font_dir/FiraCode.zip" -d "$font_dir"
-    fc-cache -fv
-    if [ -f "$font_dir/FiraCode.zip" ]; then
-        rm "$font_dir/FiraCode.zip"
+    # Scarica il file zip in una posizione temporanea
+    local temp_zip="/tmp/FiraCode.zip"
+    echo "Scaricamento FiraCode Nerd Font..."
+    if ! curl -L -o "$temp_zip" "$firaCodeUrl"; then
+        echo "Errore durante il download di FiraCode"
+    else 
+        mkdir -p "$font_dir"
+        # Estrai nella cartella delle font
+        unzip -o "$temp_zip" -d "$font_dir"
+        fc-cache -fv
+        rm "$temp_zip"
     fi
 }
 
