@@ -39,7 +39,7 @@ echo "Do you want to install default apps as Flatpak? (y/n)"
 read -r install_flatpaks
 if [[ "$install_flatpaks" == "y" ]]; then
     for app in "${flatpak_apps[@]}"; do
-        flatpak install flathub "$app" -y
+        flatpak install --system flathub "$app" -y
     done
 fi
 
