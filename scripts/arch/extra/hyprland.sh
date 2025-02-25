@@ -1,7 +1,9 @@
+#!/bin/bash
 source scripts/arch/util.sh
 
 # Required packages
 required_packages=(
+    uwsm # Universal wayland session manager https://github.com/Vladimir-csp/uwsm
     hyprland
     hyprpolkitagent
     xdg-desktop-portal-hyprland
