@@ -2,6 +2,8 @@
 source scripts/arch/util.sh
 
 basePackages=(
+  #libsecret
+  #gnome-keyring
   flatpak
   tuned
   gamemode
