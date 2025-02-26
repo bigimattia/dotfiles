@@ -5,8 +5,8 @@ basePackages=(
   networkmanager # already contains nmtui command
   nm-connection-editor
   network-manager-applet #
-  #libsecret
-  #gnome-keyring
+  libsecret
+  gnome-keyring
   flatpak
   tuned
   gamemode
