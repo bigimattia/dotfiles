@@ -4,6 +4,7 @@ source scripts/arch/util.sh
 # Required packages
 required_packages=(
     uwsm # Universal wayland session manager https://github.com/Vladimir-csp/uwsm
+    kitty
     hyprland
     hyprpolkitagent
     xdg-desktop-portal-hyprland
@@ -18,6 +19,7 @@ extra_packages=(
     cliphist # Clipboard history
     grim # Screenshot utility
     slurp # Select a region for screenshot
+    thunar # File manager
 )
 
 # Status bar, notifications, launcher packages
