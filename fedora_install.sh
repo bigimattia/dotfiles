@@ -117,6 +117,13 @@ if [[ "$enable_multiprofile_bt" == "y" ]]; then
     echo "Multiprofile Bluetooth has been enabled."
 fi
 
+# Ask to hide grub at startup
+echo "Do you want to hide grub at start? (y/n)"
+read -r hide_grub
+if [[ "hide_grub" == "y" ]]; then
+    sudo grub2-editenv - set menu_auto_hide=1
+fi
+
 # Update the system
 sudo dnf upgrade -y
 
