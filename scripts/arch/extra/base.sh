@@ -10,6 +10,7 @@ basePackages=(
   flatpak
   tuned
   gamemode
+  git
 )
 
 # Base packages
