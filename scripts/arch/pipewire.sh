@@ -1,5 +1,5 @@
 #!/bin/bash
-source scripts/arch/util.sh
+source scripts/arch/shared/util.sh
 
 pipewire=(
     pipewire
@@ -7,6 +7,7 @@ pipewire=(
     pipewire-audio
     pipewire-alsa
     pipewire-pulse
+    pavucontrol # gui controller audio
 )
 
 # Disabling pulseaudio to avoid conflicts and logging output

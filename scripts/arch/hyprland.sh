@@ -1,5 +1,5 @@
 #!/bin/bash
-source scripts/arch/util.sh
+source scripts/arch/shared/util.sh
 
 # Required packages
 required_packages=(

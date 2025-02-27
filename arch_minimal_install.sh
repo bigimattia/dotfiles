@@ -28,11 +28,11 @@ runScript() {
 }
 
 # Run the install.sh script
-runScript scripts/arch/extra/base.sh
-runScript scripts/arch/extra/bluetooth.sh
-runScript scripts/arch/extra/pipewire.sh
-runScript scripts/arch/extra/hyprland.sh
-runScript scripts/arch/extra/dotfiles.sh
+runScript scripts/arch/base.sh
+runScript scripts/arch/bluetooth.sh
+runScript scripts/arch/pipewire.sh
+runScript scripts/arch/hyprland.sh
+runScript scripts/arch/dotfiles.sh
 
 # Ask if the user wants to install zsh
 echo "Do you want to install and setup zsh? (y/n)"
