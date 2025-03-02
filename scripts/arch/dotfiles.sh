@@ -1,5 +1,7 @@
 #!/bin/bash
 # TODO : COPY HYPRLAND / WAYBAR / ETC DOTFILES TO HOME DIRECTORY
+# copy .config
+cp -r dotfiles/.config ~/
 
 # copy .zprofile
 if [ -f dotfiles/.zprofile ]; then
