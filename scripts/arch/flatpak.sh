@@ -1,23 +1,16 @@
-#!/bin/bash
-
-apps_to_remove=(
-    mediawriter
-    kwrite
-    abrt-desktop
-)
-
 # Install flatpak apps
 flatpak_apps=(
-    org.mozilla.firefox
-    org.kde.kwrite
+    org.mozilla.firefox # browser
+    org.gnome.TextEditor # text editor
     org.gnome.Showtime # videos
     org.gnome.Decibels # audio
     org.gnome.Loupe # images
-    org.mozilla.Thunderbird
-    org.libreoffice.LibreOffice
+    org.mozilla.Thunderbird # mail / calendar
+    org.libreoffice.LibreOffice # office suite
 )
 
 user_flatpak_apps=(
+    com.github.tchx84.Flatseal
     org.fedoraproject.MediaWriter
     org.gimp.GIMP
     org.kde.kdenlive
@@ -30,13 +23,6 @@ user_flatpak_apps=(
     com.heroicgameslauncher.hgl
     com.google.Chrome
 )
-
-
-echo "Do you want to remove the default Fedora apps? (y/n)"
-read -r remove_apps
-if [[ "$remove_apps" == "y" ]]; then
-    sudo dnf remove "${apps_to_remove[@]}" -y
-fi
 
 echo "Do you want to install default apps as Flatpak? (y/n)"
 read -r install_flatpaks

@@ -10,6 +10,7 @@ required_packages=(
     qt6-wayland
     uwsm # Universal wayland session manager https://github.com/Vladimir-csp/uwsm
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
 )
 
 # Status bar, notifications, launcher packages
@@ -22,6 +23,7 @@ useful_packages=(
     slurp # Select a region for screenshot
     hypridle # Idle management
     hyprlock # Lock screen
+    hyprpaper # Wallpaper
     thunar # File manager
     wlogout # Logout manager
 )

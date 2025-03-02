@@ -59,6 +59,8 @@ if [[ "$configure_flatpak" == "y" ]]; then
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     # user as well
     flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+
+    runScript scripts/arch/flatpak.sh
 fi
 
 # Ask if the user wants to set up git
