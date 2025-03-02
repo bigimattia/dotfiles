@@ -17,6 +17,7 @@ basePackages=(
   unzip
   xdg-users-dir
   xdg-utils
+  zsh
 )
 
 # Base packages
