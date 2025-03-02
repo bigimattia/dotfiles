@@ -14,6 +14,7 @@ basePackages=(
   nm-connection-editor
   playerctl
   tuned
+  unzip
   xdg-users-dir
   xdg-utils
 )
