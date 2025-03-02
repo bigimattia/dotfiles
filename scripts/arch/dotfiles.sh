@@ -1,7 +1,21 @@
 #!/bin/bash
-# TODO : COPY HYPRLAND / WAYBAR / ETC DOTFILES TO HOME DIRECTORY
+
 # copy .config
 cp -r dotfiles/.config ~/
+
+# make all .sh files in specified folders and their subfolders executable
+# this is needed in order to properly use waybar and hyprland bindings
+chmod_config_folders=(
+    waybar
+    hypr
+)
+for folder in "${chmod_folders[@]}"; do
+    if [ -d ~/.config/$folder ]; then
+        find ~/.config/$folder -type f -name "*.sh" -exec chmod +x {} \;
+    else
+        echo "Directory ~/.config/$folder does not exist."
+    fi
+done
 
 # copy .zprofile
 if [ -f dotfiles/.zprofile ]; then

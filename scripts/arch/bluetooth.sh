@@ -2,16 +2,16 @@
 source scripts/arch/shared/util.sh
 
 bluetoothList=(
-  blueman
   bluez
   bluez-utils
+  blueman
 )
 
 # Bluetooth
 printf "Installing Bluetooth Packages...\n"
- for BLUE in "${bluetoothList[@]}"; do
-   install_package "$BLUE"
-  done
+for BLUE in "${bluetoothList[@]}"; do
+  install_package "$BLUE"
+done
 
 printf " Activating Bluetooth Services...\n"
 sudo systemctl enable --now bluetooth.service
