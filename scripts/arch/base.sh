@@ -11,6 +11,10 @@ basePackages=(
   tuned
   gamemode
   git
+  wl-clipboard
+  wlogout
+  brightnessctl
+  
 )
 
 # Base packages
