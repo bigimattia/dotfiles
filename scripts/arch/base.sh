@@ -14,7 +14,12 @@ basePackages=(
   wl-clipboard
   wlogout
   brightnessctl
-  
+  nano
+  xdg-utils
+  xdg-users-dir
+  playerctl
+  mpv
+  mpv-pris
 )
 
 # Base packages
