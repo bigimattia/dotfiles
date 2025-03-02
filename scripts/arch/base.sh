@@ -2,24 +2,20 @@
 source scripts/arch/shared/util.sh
 
 basePackages=(
-  networkmanager # already contains nmtui command
-  nm-connection-editor
-  network-manager-applet #
-  libsecret
-  gnome-keyring
+  brightnessctl
   flatpak
-  tuned
   gamemode
   git
-  wl-clipboard
-  wlogout
-  brightnessctl
+  gnome-keyring
+  libsecret
   nano
-  xdg-utils
-  xdg-users-dir
+  network-manager-applet
+  networkmanager # already contains nmtui command
+  nm-connection-editor
   playerctl
-  mpv
-  mpv-pris
+  tuned
+  xdg-users-dir
+  xdg-utils
 )
 
 # Base packages

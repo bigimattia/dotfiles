@@ -2,9 +2,9 @@
 source scripts/arch/shared/util.sh
 
 bluetoothList=(
+  blueman
   bluez
   bluez-utils
-  blueman
 )
 
 # Bluetooth
