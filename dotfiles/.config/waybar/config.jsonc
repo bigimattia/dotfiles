@@ -11,14 +11,16 @@
 
   // Choose the order of the modules
   "modules-left": [
+    "custom/appmenu",
     "hyprland/window",
     "hyprland/submap"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "custom/media",
-    "mpd",
-    "idle_inhibitor",
+    //"mpd",
+    "tray",
+    "custom/hypridle",
     "pulseaudio",
     "network",
     //"power-profiles-daemon", // convert to tuned
@@ -30,9 +32,8 @@
     "hyprland/language",
     "custom/cliphist",
     "battery",
-    "battery#bat2",
+    "power-profiles-daemon",
     "clock",
-    "tray",
-    "custom/power"
+    "custom/exit"
   ]
 }
