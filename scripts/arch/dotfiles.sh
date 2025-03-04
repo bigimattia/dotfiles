@@ -12,6 +12,7 @@ chmod_config_folders=(
 for folder in "${chmod_folders[@]}"; do
     if [ -d ~/.config/$folder ]; then
         find ~/.config/$folder -type f -name "*.sh" -exec chmod +x {} \;
+        find ~/.config/$folder -type f -name "*.py" -exec chmod +x {} \;
     else
         echo "Directory ~/.config/$folder does not exist."
     fi

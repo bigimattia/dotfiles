@@ -199,7 +199,7 @@
       "custom/tools",
       "custom/cliphist",
       "custom/hypridle",
-      "custom/hyprshade"
+      "power-profiles-daemon"
     ]
   },
 
@@ -218,12 +218,14 @@
     "drawer": {
       "transition-duration": 300,
       "children-class": "not-memory",
-      "transition-left-to-right": true
+      "transition-left-to-right": false
     },
     "modules": [
       "custom/settings",
-      "custom/waybarthemes",
-      "custom/wallpaper"
+      "custom/simple-network",
+      "custom/simple-bluetooth",
+      "backlight",
+      "power-profiles-daemon"
     ]
   },
 
@@ -302,6 +304,17 @@
     "format-no-controller": ""
   },
 
+  "custom/simple-network": {
+    "format": "",
+     "on-click": "~/.config/waybar/scripts/networkmanager.sh",
+    "on-click-right": "~/.config/waybar/scripts/nm-applet.sh toggle",
+  },
+
+  "custom/simple-bluetooth": {
+  "format": "",
+  "on-click": "blueman-manager",
+  },
+
   // Other
   "user": {
     "format": "{user}",
@@ -377,10 +390,23 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
 
+    // Settings
+  "custom/settings": {
+    "format": "",
+    // "on-click": "", // TODO : open settings app
+  },
+
     // custom/appmenu
     "custom/appmenu": {
-        	"format": "{icon}",
-        	"format-icon": "󰻀",
+        	"format": "Apps",
         	"on-click": "~/.config/waybar/scripts/runwofi.sh"
-    }
+    },
+
+    // Rofi Application Launcher
+  "custom/appmenuicon": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/runwofi.sh",
+    "tooltip-format": "Open the application launcher"
+  }
+
 }

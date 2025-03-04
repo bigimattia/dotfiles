@@ -11,7 +11,7 @@
 
   // Choose the order of the modules
   "modules-left": [
-    "custom/appmenu",
+    "custom/appmenuicon",
     "hyprland/window",
     "hyprland/submap"
   ],
@@ -20,20 +20,22 @@
     "custom/media",
     //"mpd",
     "tray",
-    "custom/hypridle",
     "pulseaudio",
-    "network",
     //"power-profiles-daemon", // convert to tuned
     //"cpu",
     //"memory",
-    "temperature",
-    "backlight",
+    //"temperature",
     "keyboard-state",
-    "hyprland/language",
-    "custom/cliphist",
+    //"hyprland/language",
+    //"custom/cliphist",
     "battery",
-    "power-profiles-daemon",
-    "clock",
-    "custom/exit"
+    //"power-profiles-daemon",
+    //"custom/hypridle",
+    "custom/cliphist",
+    "custom/hypridle",
+    "group/settings",
+    "custom/exit",
+    "custom/notification",
+    "clock"
   ]
 }
