@@ -6,6 +6,10 @@ The install scripts are ment to rapidly configure a new install to suits my need
 
 Actual dotfiles are stored in the ```/dotfiles``` folder
 
+# Hypr dotfiles look
+
+![Hypr look](assets/hypr_look.png)
+
 ### fedora workstation post-install script
 
 - set ```<Super>+<number>``` to switch workspaces 
