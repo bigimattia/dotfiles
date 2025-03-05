@@ -312,7 +312,7 @@
   },
 
   "custom/simple-bluetooth": {
-  "format": "",
+  "format": "",
   "on-click": "blueman-manager",
   },
 
@@ -419,8 +419,8 @@
               "custom/cliphist",
               "custom/hypridle",
               "group/settings",
-              "custom/exit",
-              "custom/notification"
+              "custom/exit"
+              //"custom/notification"
 		]
 	},
 

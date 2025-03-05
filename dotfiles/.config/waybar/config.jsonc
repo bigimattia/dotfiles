@@ -23,14 +23,14 @@
   // Choose the order of the modules
   "modules-left": [
     "custom/l_end","wlr/taskbar","custom/r_end",
-    "custom/l_end","hyprland/window","custom/r_end", "custom/l_end","hyprland/submap","custom/r_end",
+    "custom/l_end","hyprland/window", "custom/r_end", "custom/l_end", "hyprland/submap","custom/r_end",
     "custom/padd"
   ],
   "modules-center": ["custom/l_end", "hyprland/workspaces","custom/r_end"],
   "modules-right": [
     "custom/l_end","tray","custom/r_end",
     "custom/l_end","custom/media","custom/r_end",
-    "custom/l_end","pulseaudio","keyboard-state","battery","group/control-panel","clock","custom/r_end",
+    "custom/l_end","pulseaudio","keyboard-state","battery","group/control-panel","custom/r_end","custom/l_end","custom/notification", "clock","custom/r_end",
     "custom/padd"
   ]
 }

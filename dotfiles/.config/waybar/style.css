@@ -130,11 +130,19 @@ min-height: 10px
 #custom-networkmanager,
 #custom-simple-network,
 #hyprland-workspaces,
+#hyprland-submap,
+#hyprland-window,
 #custom-media,
 #pulseaudio,
 #keyboard-state,
 #battery,
-#control-panel, // group/control-panel
+#control-panel,
+#custom-exit,
+#settings,
+#power-profiles-daemon,
+#custom-settings
+#custom-hypridle,
+#custom-cliphist,
 #custom-power,
 #custom-l_end,
 #custom-r_end {
