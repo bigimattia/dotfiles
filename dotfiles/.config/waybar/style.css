@@ -119,10 +119,17 @@ min-height: 10px
 color: @main-fg;
 background: @main-bg;
 opacity: 1;
-margin: 4px 0px 4px 0px;
 border-radius: 30px;
 padding-left: 10px;
 padding-right: 10px;
+}
+
+window#waybar.empty #window,
+window#tray.empty #tray,
+window#taskbar empty #taskbar
+{
+    background-color: transparent;
+    padding: 0px;
 }
 
 #pulseaudio,
@@ -142,11 +149,4 @@ padding-right: 10px;
     margin: 4px 0px 4px 0px;
     padding-left: 4px;
     padding-right: 4px;
-}
-
-#custom-l_end {
-    //margin-left: 0px; // provided by waybar spacing: 4
-}
-#custom-r_end {
-    //margin-right: 3px; // provided by waybar spacing: 4
 }
