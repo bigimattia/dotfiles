@@ -1,20 +1,20 @@
-* {{
+* {
     background: rgba(0,0,1,0.5);
     foreground: #FFFFFF;
-    color0:     {color0};
-    color1:     {color1};
-    color2:     {color2};
-    color3:     {color3};
-    color4:     {color4};
-    color5:     {color5};
-    color6:     {color6};
-    color7:     {color7};
-    color8:     {color8};
-    color9:     {color9};
-    color10:    {color10};
-    color11:    {color11};
-    color12:    {color12};
-    color13:    {color13};
-    color14:    {color14};
-    color15:    {color15};
-}}
+color0: #1F211E;
+color1: #4B7A85;
+color2: #CC6A93;
+color3: #5C9894;
+color4: #A0A89B;
+color5: #D1B9A9;
+color6: #E3D6D8;
+color7: #F5F1F4;
+color8: #666666;
+color9: #4B7A85;
+color10: #CC6A93;
+color11: #5C9894;
+color12: #A0A89B;
+color13: #D1B9A9;
+color14: #E3D6D8;
+color15: #F5F1F4;
+}

@@ -1,3 +1,1 @@
-blurredwallpaper="$HOME/.config/hypr/assets/blurred_wallpaper.png"
-
-* { current-image: url(\"$blurredwallpaper\", height); }
+* { current-image: url("~/.config/hypr/assets/blurred_wallpaper.png", height); }
