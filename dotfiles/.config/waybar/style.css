@@ -36,12 +36,12 @@ padding: 0px;
 box-shadow: none;
 text-shadow: none;
 padding: 0px;
-border-radius: 9px;
+border-radius: 30px;
 margin-top: 3px;
 margin-bottom: 3px;
 margin-left: 0px;
-padding-left: 3px;
-padding-right: 3px;
+padding-left: 10px;
+padding-right: 10px;
 margin-right: 0px;
 color: @main-fg;
 animation: ws_normal 20s ease-in-out 1;
@@ -50,10 +50,10 @@ animation: ws_normal 20s ease-in-out 1;
 #workspaces button.active {
 background: @wb-act-bg;
 color: @wb-act-fg;
-margin-left: 3px;
-padding-left: 12px;
-padding-right: 12px;
-margin-right: 3px;
+margin-left: 4px;
+padding-left: 10px;
+padding-right: 10px;
+margin-right: 4px;
 animation: ws_active 20s ease-in-out 1;
 transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
@@ -143,6 +143,7 @@ min-height: 10px
 #custom-settings
 #custom-hypridle,
 #custom-cliphist,
+#custom-notification,
 #custom-power,
 #custom-l_end,
 #custom-r_end {
@@ -155,14 +156,14 @@ padding-right: 4px;
 }
 
 #custom-r_end {
-border-radius: 0px 21px 21px 0px;
-margin-right: 9px;
+border-radius: 0px 60px 60px 0px;
+margin-right: 4px;
 padding-right: 3px;
 }
 
 #custom-l_end {
-border-radius: 21px 0px 0px 21px;
-margin-left: 9px;
+border-radius: 60px 0px 0px 60px;
+margin-left: 4px;
 padding-left: 3px;
 }
 
