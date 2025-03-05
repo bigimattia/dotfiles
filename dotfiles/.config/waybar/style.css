@@ -134,7 +134,7 @@ min-height: 10px
 #pulseaudio,
 #keyboard-state,
 #battery,
-#group-control-panel,
+#control-panel, // group/control-panel
 #custom-power,
 #custom-l_end,
 #custom-r_end {
