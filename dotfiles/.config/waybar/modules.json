@@ -416,11 +416,22 @@
 		"modules": [
 			//"custom/do-not-disturb",
 			//"custom/vpn",
+              "pulseaudio",
+              "keyboard-state",
+              "battery",
               "custom/cliphist",
               "custom/hypridle",
               "group/settings",
               "custom/exit"
               //"custom/notification"
+		]
+	},
+
+	"group/info-panel": {
+		"orientation": "horizontal",
+		"modules": [
+              "custom/notification",
+              "clock"
 		]
 	},
 

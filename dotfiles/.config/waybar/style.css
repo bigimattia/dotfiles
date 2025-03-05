@@ -37,8 +37,8 @@ box-shadow: none;
 text-shadow: none;
 padding: 0px;
 border-radius: 30px;
-margin-top: 3px;
-margin-bottom: 3px;
+margin-top: 4px;
+margin-bottom: 4px;
 margin-left: 0px;
 padding-left: 10px;
 padding-right: 10px;
@@ -69,12 +69,12 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 box-shadow: none;
 text-shadow: none;
 padding: 0px;
-border-radius: 9px;
-margin-top: 3px;
-margin-bottom: 3px;
+border-radius: 30px;
+margin-top: 4px;
+margin-bottom: 4px;
 margin-left: 0px;
-padding-left: 3px;
-padding-right: 3px;
+padding-left: 4px;
+padding-right: 4px;
 margin-right: 0px;
 color: @wb-color;
 animation: tb_normal 20s ease-in-out 1;
@@ -83,10 +83,12 @@ animation: tb_normal 20s ease-in-out 1;
 #taskbar button.active {
 background: @wb-act-bg;
 color: @wb-act-color;
-margin-left: 3px;
-padding-left: 12px;
-padding-right: 12px;
-margin-right: 3px;
+margin-top: 4px;
+margin-bottom: 4px;
+margin-left: 0px;
+padding-left: 4px;
+padding-right: 4px;
+margin-right: 0px;
 animation: tb_active 20s ease-in-out 1;
 transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
@@ -106,68 +108,45 @@ min-height: 16px
 min-height: 10px
 }
 
-
-#tray,
-#workspaces,
 #taskbar,
-#cpu,
-#custom-cpuinfo,
-#memory,
-#custom-gpuinfo,
-#clock,
-#backlight,
-#idle_inhibitor,
-#custom-battery,
-#custom-brightness,
-#custom-volume,
-#custom-microphone,
-#language,
-#custom-system-update,
-#custom-do-not-disturb,
-#custom-vpn,
-#custom-bluetooth,
-#custom-simple-bluetooth,
-#custom-networkmanager,
-#custom-simple-network,
-#hyprland-workspaces,
-#hyprland-submap,
-#hyprland-window,
+#window,
+#submap,
+#workspaces,
+#tray,
 #custom-media,
-#pulseaudio,
-#keyboard-state,
-#battery,
 #control-panel,
-#custom-exit,
-#settings,
-#power-profiles-daemon,
-#custom-settings
-#custom-hypridle,
-#custom-cliphist,
-#custom-notification,
-#custom-power,
-#custom-l_end,
-#custom-r_end {
+#info-panel {
 color: @main-fg;
 background: @main-bg;
 opacity: 1;
 margin: 4px 0px 4px 0px;
-padding-left: 4px;
-padding-right: 4px;
+border-radius: 30px;
+padding-left: 10px;
+padding-right: 10px;
 }
 
-#custom-r_end {
-border-radius: 0px 60px 60px 0px;
-margin-right: 4px;
-padding-right: 3px;
+#pulseaudio,
+#keyboard-state,
+#battery,
+#custom-cliphist,
+#custom-hypridle,
+#settings,
+#custom-settings,
+#custom-simple-network,
+#custom-simple-bluetooth,
+#backlight,
+#power-profiles-daemon,
+#custom-exit,
+#custom-notification,
+#clock {
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 #custom-l_end {
-border-radius: 60px 0px 0px 60px;
-margin-left: 4px;
-padding-left: 3px;
+    //margin-left: 0px; // provided by waybar spacing: 4
 }
-
-#custom-padd_bg {
-background: @main-bg;
-margin: 4px 0px 4px 0px;
+#custom-r_end {
+    //margin-right: 3px; // provided by waybar spacing: 4
 }

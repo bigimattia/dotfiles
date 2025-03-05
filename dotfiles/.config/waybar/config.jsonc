@@ -3,7 +3,7 @@
   "layer": "top",
   "position": "top",
   "mod": "dock",
-  "height": 34,
+  //"height": 34,
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
@@ -13,24 +13,26 @@
   //"output": "DP-1", // PC Configuration
   // "layer": "top", // Waybar at top layer
   // "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 32, // Waybar height (to be removed for auto height)
+  //"height": 32, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
-  //"spacing": 4, // Gaps between modules (4px)
+  "spacing": 4, // Gaps between modules (4px)
 
   // Load Modules
   "include": ["~/.config/waybar/modules.json"],
 
   // Choose the order of the modules
   "modules-left": [
-    "custom/l_end","wlr/taskbar","custom/r_end",
-    "custom/l_end","hyprland/window", "custom/r_end", "custom/l_end", "hyprland/submap","custom/r_end",
-    "custom/padd"
+    "custom/l_end",
+   "wlr/taskbar",
+    "hyprland/window",
+    "hyprland/submap",
   ],
-  "modules-center": ["custom/l_end", "hyprland/workspaces","custom/r_end"],
+  "modules-center": ["hyprland/workspaces",],
   "modules-right": [
-    "custom/l_end","tray","custom/r_end",
-    "custom/l_end","custom/media","custom/r_end",
-    "custom/l_end","pulseaudio","keyboard-state","battery","group/control-panel","custom/r_end","custom/l_end","custom/notification", "clock","custom/r_end",
-    "custom/padd"
+    "tray",
+    "custom/media",
+   "group/control-panel",
+   "group/info-panel",
+   "custom/r_end"
   ]
 }
