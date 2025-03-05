@@ -15,7 +15,7 @@
   // "position": "bottom", // Waybar position (top|bottom|left|right)
   "height": 32, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
+  //"spacing": 4, // Gaps between modules (4px)
 
   // Load Modules
   "include": ["~/.config/waybar/modules.json"],
@@ -26,7 +26,7 @@
     "custom/l_end","hyprland/window", "hyprland/submap","custom/r_end",
     "custom/padd"
   ],
-  "modules-center": ["hyprland/workspaces"],
+  "modules-center": ["custom/l_end", "hyprland/workspaces","custom/r_end"],
   "modules-right": [
     "custom/l_end","tray","custom/r_end",
     "custom/l_end","custom/media","custom/r_end",
