@@ -13,9 +13,9 @@
       "default": ""
     },
     "persistent-workspaces": {
-        "eDP-1": [ 1, 2, 3, 4, 5],
-        "HDMI-A-1": [ 6, 7, 8, 9, 10],
-    }
+            "eDP-1": [ 1, 2, 3, 4, 5],
+            "HDMI-A-1": [ 6, 7, 8, 9, 10],
+        }
   },
 
   // Taskbar
@@ -312,7 +312,7 @@
   },
 
   "custom/simple-bluetooth": {
-  "format": "",
+  "format": "",
   "on-click": "blueman-manager",
   },
 
@@ -408,6 +408,67 @@
     "format": "",
     "on-click": "~/.config/waybar/scripts/runwofi.sh",
     "tooltip-format": "Open the application launcher"
-  }
+  },
 
+
+  "group/control-panel": {
+		"orientation": "horizontal",
+		"modules": [
+			//"custom/do-not-disturb",
+			//"custom/vpn",
+              "custom/cliphist",
+              "custom/hypridle",
+              "group/settings",
+              "custom/exit",
+              "custom/notification"
+		]
+	},
+
+    "custom/vpn": {
+        "exec": "sh ~/.config/waybar/scripts/vpn-manager.sh --status --disabled-color \"#f38ba8\" --enabled-color \"#a6e3a1\" | cat",
+        "return-type": "raw",
+        "format": "{} ",
+        "interval": 3,
+        "rotate": 0,
+        "on-click": "sh ~/.config/waybar/scripts/vpn-manager.sh",
+        "tooltip": false
+    },
+    "custom/bluetooth": {
+        "format": "<span color=\"#89b4fa\">󰂯  </span>",
+        "interval": 3,
+        "rotate": 0,
+        "on-click": "blueman-manager",
+        "tooltip": false
+    },
+    "custom/power": {
+        "on-click": "~/.config/waybar/scripts/wlogout.sh",
+        "format": "<span color=\"#f38ba8\"> </span>",
+        "rotate": 0,
+        "tooltip": false
+    },
+
+
+    "custom/l_end": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/r_end": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/padd": {
+        "format": "  ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/padd_bg": {
+        "format": "  ",
+        "interval" : "once",
+        "tooltip": false
+    }
 }

@@ -1,5 +1,16 @@
 // -*- mode: jsonc -*-
 {
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "height": 34,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "reload_style_on_change": true,
+
+  "output": "eDP-1",
+  //"output": "DP-1", // PC Configuration
   // "layer": "top", // Waybar at top layer
   // "position": "bottom", // Waybar position (top|bottom|left|right)
   "height": 32, // Waybar height (to be removed for auto height)
@@ -11,31 +22,15 @@
 
   // Choose the order of the modules
   "modules-left": [
-    "custom/appmenuicon",
-    "hyprland/window",
-    "hyprland/submap"
+    "custom/l_end","wlr/taskbar","custom/r_end",
+    "custom/l_end","hyprland/window", "hyprland/submap","custom/r_end",
+    "custom/padd"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
-    "custom/media",
-    //"mpd",
-    "tray",
-    "pulseaudio",
-    //"power-profiles-daemon", // convert to tuned
-    //"cpu",
-    //"memory",
-    //"temperature",
-    "keyboard-state",
-    //"hyprland/language",
-    //"custom/cliphist",
-    "battery",
-    //"power-profiles-daemon",
-    //"custom/hypridle",
-    "custom/cliphist",
-    "custom/hypridle",
-    "group/settings",
-    "custom/exit",
-    "custom/notification",
-    "clock"
+    "custom/l_end","tray","custom/r_end",
+    "custom/l_end","custom/media","custom/r_end",
+    "custom/l_end","pulseaudio","keyboard-state","battery","group/control-panel","clock","custom/r_end",
+    "custom/padd"
   ]
 }
