@@ -61,9 +61,9 @@
   // Cliphist
   "custom/cliphist": {
     "format": "",
-    "on-click": "sleep 0.1 && ~/.config/waybar/scripts/cliphist.sh",
-    "on-click-right": "sleep 0.1 && ~/.config/waybar/scripts/cliphist.sh d",
-    "on-click-middle": "sleep 0.1 && ~/.config/waybar/scripts/cliphist.sh w",
+    "on-click": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh",
+    "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d",
+    "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w",
     "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list"
   },
 
@@ -400,13 +400,13 @@
     // custom/appmenu
     "custom/appmenu": {
         	"format": "Apps",
-        	"on-click": "~/.config/waybar/scripts/runwofi.sh"
+        	"on-click": "~/.config/waybar/scripts/runrofi.sh"
     },
 
     // Rofi Application Launcher
   "custom/appmenuicon": {
     "format": "",
-    "on-click": "~/.config/waybar/scripts/runwofi.sh",
+    "on-click": "~/.config/waybar/scripts/runrofi.sh",
     "tooltip-format": "Open the application launcher"
   },
 

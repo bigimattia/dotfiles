@@ -17,7 +17,8 @@ required_packages=(
 useful_packages=(
     swaync # Notifications
     waybar # Status bar
-    wofi # Launcher
+    rofi-wayland # Launcher
+    #wofi # Launcher
     cliphist # Clipboard history
     grim # Screenshot utility
     slurp # Select a region for screenshot

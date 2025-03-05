@@ -1,0 +1,3 @@
+blurredwallpaper="$HOME/.config/hypr/assets/blurred_wallpaper.png"
+
+* { current-image: url(\"$blurredwallpaper\", height); }
