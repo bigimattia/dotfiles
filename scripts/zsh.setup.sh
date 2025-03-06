@@ -19,6 +19,7 @@ nvmUrl="https://raw.githubusercontent.com/nvm-sh/nvm/$nvmVersion/install.sh"
 
 MINIMAL_INSTALL=false
 INSTALL_AUTOSUGGESTIONS=false
+INSTALL_TABHISTORYCOMPLETION=false
 INSTALL_NVM=false
 INSTALL_THEME_MINIMAL=false
 INSTALL_STARSHIP=false
@@ -32,6 +33,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         INSTALL_AUTOSUGGESTIONS=true
+    fi
+
+    read -p "Do you want to setup tab + arrow history completion? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        INSTALL_TABHISTORYCOMPLETION=true
     fi
 
     read -p "Do you want to install nvm? (y/n) " -n 1 -r
@@ -67,6 +74,13 @@ if [[ $INSTALL_AUTOSUGGESTIONS == true || $MINIMAL_INSTALL == false ]]; then
     else
         git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     fi   
+fi
+
+if [[ $INSTALL_TABHISTORYCOMPLETION == true || $MINIMAL_INSTALL == false ]]; then
+    echo "# Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
+    echo "autoload -Uz compinit" >> ~/.zsh/plugins/history.zsh
+    echo "compinit" >> ~/.zsh/plugins/history.zsh
+    echo "zstyle ':completion:*' menu select"  >> ~/.zsh/plugins/history.zsh
 fi
 
 if [[ $INSTALL_NVM == true || $MINIMAL_INSTALL == false ]]; then
