@@ -126,7 +126,7 @@ padding-right: 10px;
 
 window#waybar.empty #window,
 window#tray.empty #tray,
-window#taskbar empty #taskbar
+window#taskbar .empty #taskbar
 {
     background-color: transparent;
     padding: 0px;
