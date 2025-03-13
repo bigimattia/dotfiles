@@ -94,6 +94,17 @@ if [[ "$setup_git" == "y" ]]; then
     runScript scripts/git.setup.sh
 fi
 
+# Ask if the user wants to install docker
+echo "Do you want to install and setup docker? (y/n)"
+read -r install_docker
+if [[ "$install_docker" == "y" ]]; then
+	sudo dnf install docker-cli containerd docker-compose
+	sudo systemctl restart docker.socket
+	sudo groupadd docker
+	sudo usermod -aG docker $USER
+	newgrp docker
+fi
+
 # Ask if the user wants to enable multiprofile Bluetooth
 echo "Do you want to enable multiprofile Bluetooth? (y/n)"
 echo "PLEASE NOTE: This will enable the ability to connect to multiple Bluetooth profiles at the same time."
