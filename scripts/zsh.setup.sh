@@ -76,13 +76,6 @@ if [[ $INSTALL_AUTOSUGGESTIONS == true || $MINIMAL_INSTALL == false ]]; then
     fi   
 fi
 
-if [[ $INSTALL_TABHISTORYCOMPLETION == true || $MINIMAL_INSTALL == false ]]; then
-    echo "# Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
-    echo "autoload -Uz compinit" >> ~/.zsh/plugins/history.zsh
-    echo "compinit" >> ~/.zsh/plugins/history.zsh
-    echo "zstyle ':completion:*' menu select"  >> ~/.zsh/plugins/history.zsh
-fi
-
 if [[ $INSTALL_NVM == true || $MINIMAL_INSTALL == false ]]; then
     echo "# nvm" >> ~/.zsh/plugins.zsh
     echo "source \$ZSH/plugins/nvm.zsh" >> ~/.zsh/plugins.zsh
@@ -131,4 +124,26 @@ if [[ $INSTALL_STARSHIP == true || $MINIMAL_INSTALL == false ]]; then
 elif [[ $INSTALL_THEME_MINIMAL == true ]]; then
     echo "# theme minimal" >> ~/.zsh/plugins.zsh
     echo "source \$ZSH/plugins/theme.minimal.zsh" >> ~/.zsh/plugins.zsh
+fi
+
+if [[ $INSTALL_TABHISTORYCOMPLETION == true || $MINIMAL_INSTALL == false ]]; then
+    echo "# START - Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
+    echo "autoload -Uz compinit" >> ~/.zsh/plugins/history.zsh
+    echo "compinit" >> ~/.zsh/plugins/history.zsh
+
+    echo "# Enable arrow-key selection for completion" >> ~/.zsh/plugins/history.zsh
+    echo "zstyle ':completion:*' menu select" >> ~/.zsh/plugins/history.zsh
+
+    echo "# Use history-based completion (matches what was typed)" >> ~/.zsh/plugins/history.zsh
+    echo "zstyle ':completion:*' completer _history" >> ~/.zsh/plugins/history.zsh
+
+    echo "# Only show history matches that continue what’s already typed" >> ~/.zsh/plugins/history.zsh
+    echo "zstyle ':completion:*:history' stop yes" >> ~/.zsh/plugins/history.zsh
+
+    echo "# Remove duplicates in history completion" >> ~/.zsh/plugins/history.zsh
+    echo "zstyle ':completion:*' sort false" >> ~/.zsh/plugins/history.zsh
+
+    echo "# Prioritize most recent matches first" >> ~/.zsh/plugins/history.zsh
+    echo "zstyle ':completion:*' history-incremental-search-backward yes" >> ~/.zsh/plugins/history.zsh
+    echo "# END - Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
 fi
