@@ -6,15 +6,21 @@ apps_to_remove=(
     abrt-desktop
 )
 
+#apps_to_install=(
+#    merkuro # calendar + contacts
+#)
+
 # Install flatpak apps
 flatpak_apps=(
-    org.mozilla.firefox
-    org.kde.kwrite
-    org.gnome.Showtime # videos
-    org.gnome.Decibels # audio
-    org.gnome.Loupe # images
-    org.mozilla.Thunderbird
-    org.libreoffice.LibreOffice
+    org.mozilla.firefox # browser
+    org.kde.kwrite # editor
+    org.kde.kalk # calc
+    org.kde.elisa # audio
+    org.kde.okular # pdf
+    org.kde.gwenview # images
+    org.mozilla.Thunderbird # email
+    org.libreoffice.LibreOffice # office suite
+    org.kde.kolourpaint # paint
 )
 
 user_flatpak_apps=(
