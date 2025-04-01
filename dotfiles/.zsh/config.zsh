@@ -3,3 +3,6 @@
 
 #source plugins
 source $ZSH/plugins.zsh
+
+#source aliases
+source $ZSH/aliases.zsh
