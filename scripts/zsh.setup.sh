@@ -88,6 +88,12 @@ if [[ $INSTALL_NVM == true || $MINIMAL_INSTALL == false ]]; then
 fi
 
 install_firacode_nerd_font() {
+    # macos has a different Font location
+    if [[ "$(uname)" == "Darwin" ]]; then
+        font_dir="$HOME/Library/Fonts/FiraCodeNerdFont"
+    else
+        font_dir="$HOME/.local/share/fonts/FiraCodeNerdFont"
+    fi
     local font_dir="$HOME/.local/share/fonts/FiraCodeNerdFont" # ~ operator does not expand in the string
     # Scarica il file zip in una posizione temporanea
     local temp_zip="/tmp/FiraCode.zip"
@@ -98,7 +104,9 @@ install_firacode_nerd_font() {
         mkdir -p "$font_dir"
         # Estrai nella cartella delle font
         unzip -o "$temp_zip" -d "$font_dir"
-        fc-cache -fv
+        if [[ "$(uname)" != "Darwin" ]]; then
+            fc-cache -fv
+        fi
         rm "$temp_zip"
     fi
 }
