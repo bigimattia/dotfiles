@@ -64,6 +64,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
             INSTALL_THEME_MINIMAL=true
         fi
     fi
+
+    read -p "Do you want to install sdkman? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        INSTALL_SDKMAN=true
+    fi
 fi
 
 if [[ $INSTALL_AUTOSUGGESTIONS == true || $MINIMAL_INSTALL == false ]]; then
