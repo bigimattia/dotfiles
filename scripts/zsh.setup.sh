@@ -24,6 +24,7 @@ INSTALL_NVM=false
 INSTALL_THEME_MINIMAL=false
 INSTALL_STARSHIP=false
 INSTALL_FIRACODE=false
+INSTALL_SDKMAN=false
 
 read -p "Do you want a minimal install? (y/n) " -n 1 -r
 echo
@@ -123,6 +124,7 @@ fi
 if [[ $INSTALL_STARSHIP == true || $MINIMAL_INSTALL == false ]]; then
     echo "# starship" >> ~/.zshrc
     echo "eval \"\$(starship init zsh)\"" >> ~/.zshrc
+    echo -en '\n' >> ~/.zshrc
     
     if [ -f /usr/local/bin/starship ]; then
         echo "Starship is already installed."
@@ -154,4 +156,17 @@ if [[ $INSTALL_TABHISTORYCOMPLETION == true || $MINIMAL_INSTALL == false ]]; the
     echo "# Prioritize most recent matches first" >> ~/.zsh/plugins/history.zsh
     echo "zstyle ':completion:*' history-incremental-search-backward yes" >> ~/.zsh/plugins/history.zsh
     echo "# END - Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
+fi
+
+if [[ $INSTALL_SDKMAN == true || $MINIMAL_INSTALL == false ]]; then
+    echo "#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!" >> ~/.zshrc
+    echo "export SDKMAN_DIR=\"\$HOME/.sdkman\"" >> ~/.zshrc
+    echo "[[ -s \"\$HOME/.sdkman/bin/sdkman-init.sh\" ]] && source \"\$HOME/.sdkman/bin/sdkman-init.sh\""
+    echo -en '\n' >> ~/.zshrc
+
+    if [ -d ~/.sdkman ]; then
+        echo "Sdkman is already installed."
+    else
+	curl -s "https://get.sdkman.io?rcupdate=false" | bash
+    fi
 fi
