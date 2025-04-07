@@ -120,7 +120,7 @@ fi
 # Ask to hide grub at startup
 echo "Do you want to hide grub at start? (y/n)"
 read -r hide_grub
-if [[ "hide_grub" == "y" ]]; then
+if [[ "$hide_grub" == "y" ]]; then
     sudo grub2-editenv - set menu_auto_hide=1
 fi
 
