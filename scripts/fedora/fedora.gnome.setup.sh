@@ -38,6 +38,7 @@ apps=(
     org.gnome.Clocks
     org.gnome.Connections
     org.gnome.Contacts
+    org.gnome.Decibels
     org.gnome.font-viewer
     org.gnome.Logs
     org.gnome.Loupe
