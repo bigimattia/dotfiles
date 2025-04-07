@@ -25,6 +25,7 @@ apps_to_remove=(
     mediawriter
     rhythmbox
     simple-scan
+    snapshot
     totem
 )
 
@@ -44,6 +45,7 @@ apps=(
     org.gnome.Papers
     org.gnome.Showtime
     org.gnome.SimpleScan
+    org.gnome.Snapshot
     org.gnome.TextEditor
     org.gnome.Weather
     org.mozilla.firefox
@@ -51,6 +53,7 @@ apps=(
 
 user_flatpak_apps=(
     com.github.tchx84.Flatseal
+    com.mattjakeman.ExtensionManager
     org.fedoraproject.MediaWriter
     org.gimp.GIMP
     org.kde.kdenlive
