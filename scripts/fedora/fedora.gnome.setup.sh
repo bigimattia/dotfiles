@@ -35,7 +35,7 @@ apps=(
     org.gnome.Calendar
     org.gnome.Calculator
     org.gnome.Characters
-    org.gnome.Clocks
+    org.gnome.clocks
     org.gnome.Connections
     org.gnome.Contacts
     org.gnome.Decibels
