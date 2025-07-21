@@ -15,8 +15,8 @@ set_shortcut() {
   fi
 }
 
-read -p "Do you want to set GNOME workspace keybinds (Switch: <Super>+<n>; Move window to: <Super>+<shift>+<n>)? (yes/no): " response
-if [[ "$response" == "yes" ]]; then
+read -p "Do you want to set GNOME workspace keybinds (Switch: <Super>+<n>; Move window to: <Super>+<shift>+<n>)? (y/n): " response
+if [[ "$response" == "y" ]]; then
     echo "setting keybinds to  || workspace -> <Super>+$i || move-window-to-workspace -> <Shift><Super>+$i  ||  i=10 will be set to 0";
     for i in {1..10}; do
         set_shortcut $i "['<Super>$i']" "['<Shift><Super>$i']"
