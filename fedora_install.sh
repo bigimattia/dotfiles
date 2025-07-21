@@ -88,11 +88,7 @@ if [[ "$install_zsh" == "y" ]]; then
 fi
 
 # Ask if the user wants to set up git
-echo "Do you want to set up git? (y/n)"
-read -r setup_git
-if [[ "$setup_git" == "y" ]]; then
-    runScript scripts/git.setup.sh
-fi
+runScript scripts/git.setup.sh
 
 # Ask if the user wants to install docker
 echo "Do you want to install and setup docker? (y/n)"
