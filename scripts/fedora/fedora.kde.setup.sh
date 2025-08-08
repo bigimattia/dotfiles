@@ -1,17 +1,31 @@
 #!/bin/bash
 
 apps_to_remove=(
-    mediawriter
+    akregator
+    elisa
+    kamoso
     kwrite
-    abrt-desktop
+    kalk
+    kpat
+    kmahjongg
+    kmines
+    gwenview
+    mediawriter
+    fedora-bookmarks
+    firefox
+    libreoffice-core
+    neochat
+    okular
+    qrca
+    dragon
 )
 
 # set of apps that won't work as flatpak
-apps_to_install=(
-    kdepim-runtime # allow calendar online integration
-    kdepim-addons # make clock display events
-    merkuro # install calendar and contacts
-)
+# apps_to_install=(
+#     kdepim-runtime # allow calendar online integration
+#     kdepim-addons # make clock display events
+#     merkuro # install calendar and contacts
+# )
 
 # Install flatpak apps
 flatpak_apps=(
@@ -47,11 +61,11 @@ if [[ "$remove_apps" == "y" ]]; then
     sudo dnf remove "${apps_to_remove[@]}" -y
 fi
 
-echo "Do you want to install the default Fedora KDE apps? (y/n)"
-read -r install_apps
-if [[ "$install_apps" == "y" ]]; then
-    sudo dnf install "${apps_to_install[@]}" -y
-fi
+# echo "Do you want to install the default Fedora KDE apps? (y/n)"
+# read -r install_apps
+# if [[ "$install_apps" == "y" ]]; then
+#     sudo dnf install "${apps_to_install[@]}" -y
+# fi
 
 echo "Do you want to install default apps as Flatpak? (y/n)"
 read -r install_flatpaks
