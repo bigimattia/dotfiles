@@ -136,6 +136,8 @@ if [[ $INSTALL_STARSHIP == true || $MINIMAL_INSTALL == false ]]; then
         echo "Starship is already installed."
     else
         sh -c "$(curl -sS https://starship.rs/install.sh)"
+
+        cp dotfiles/.config/starship.toml $HOME/.config/
     fi
 elif [[ $INSTALL_THEME_MINIMAL == true ]]; then
     echo "# theme minimal" >> ~/.zsh/plugins.zsh
