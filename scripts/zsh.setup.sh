@@ -17,7 +17,7 @@ firaCodeUrl="https://github.com/ryanoasis/nerd-fonts/releases/download/${firaCod
 nvmVersion="v0.40.1"
 nvmUrl="https://raw.githubusercontent.com/nvm-sh/nvm/$nvmVersion/install.sh"
 
-MINIMAL_INSTALL=false
+CUSTOMIZED_INSTALL=false
 INSTALL_AUTOSUGGESTIONS=false
 INSTALL_TABHISTORYCOMPLETION=false
 INSTALL_NVM=false
@@ -26,10 +26,10 @@ INSTALL_STARSHIP=false
 INSTALL_FIRACODE=false
 INSTALL_SDKMAN=false
 
-read -p "Do you want a minimal install? (y/n) " -n 1 -r
+read -p "Do you want a customized zsh install? (y/n) [selecting n will only install zsh and autosuggestions]" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    MINIMAL_INSTALL=true
+    CUSTOMIZED_INSTALL=true
     read -p "Do you want to install autosuggestions? (y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -72,7 +72,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
 fi
 
-if [[ $INSTALL_AUTOSUGGESTIONS == true || $MINIMAL_INSTALL == false ]]; then
+if [[ $INSTALL_AUTOSUGGESTIONS == true || $CUSTOMIZED_INSTALL == false ]]; then
     echo "# zsh-autosuggestions" >> ~/.zsh/plugins.zsh
     echo "source \$ZSH/plugins/zsh-autosuggestions.zsh" >> ~/.zsh/plugins.zsh
 
@@ -83,7 +83,7 @@ if [[ $INSTALL_AUTOSUGGESTIONS == true || $MINIMAL_INSTALL == false ]]; then
     fi   
 fi
 
-if [[ $INSTALL_NVM == true || $MINIMAL_INSTALL == false ]]; then
+if [[ $INSTALL_NVM == true || $CUSTOMIZED_INSTALL == false ]]; then
     echo "# nvm" >> ~/.zsh/plugins.zsh
     echo "source \$ZSH/plugins/nvm.zsh" >> ~/.zsh/plugins.zsh
 
@@ -118,7 +118,7 @@ install_firacode_nerd_font() {
     fi
 }
 
-if [[ $INSTALL_FIRACODE == true || $MINIMAL_INSTALL == false ]]; then
+if [[ $INSTALL_FIRACODE == true ]]; then
     if [ -d ~/.local/share/fonts/FiraCodeNerdFont ]; then
         echo "FiraCodeFonts is already installed."
     else
@@ -127,7 +127,7 @@ if [[ $INSTALL_FIRACODE == true || $MINIMAL_INSTALL == false ]]; then
 fi
 
 # starship MUST be last line in the .zshrc file
-if [[ $INSTALL_STARSHIP == true || $MINIMAL_INSTALL == false ]]; then
+if [[ $INSTALL_STARSHIP == true ]]; then
     echo "# starship" >> ~/.zshrc
     echo "eval \"\$(starship init zsh)\"" >> ~/.zshrc
     echo -en '\n' >> ~/.zshrc
@@ -144,7 +144,7 @@ elif [[ $INSTALL_THEME_MINIMAL == true ]]; then
     echo "source \$ZSH/plugins/theme.minimal.zsh" >> ~/.zsh/plugins.zsh
 fi
 
-if [[ $INSTALL_TABHISTORYCOMPLETION == true || $MINIMAL_INSTALL == false ]]; then
+if [[ $INSTALL_TABHISTORYCOMPLETION == true ]]; then
     echo "# START - Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
     echo "autoload -Uz compinit" >> ~/.zsh/plugins/history.zsh
     echo "compinit" >> ~/.zsh/plugins/history.zsh
@@ -166,7 +166,7 @@ if [[ $INSTALL_TABHISTORYCOMPLETION == true || $MINIMAL_INSTALL == false ]]; the
     echo "# END - Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
 fi
 
-if [[ $INSTALL_SDKMAN == true || $MINIMAL_INSTALL == false ]]; then
+if [[ $INSTALL_SDKMAN == true ]]; then
     echo "#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!" >> ~/.zshrc
     echo "export SDKMAN_DIR=\"\$HOME/.sdkman\"" >> ~/.zshrc
     echo "[[ -s \"\$HOME/.sdkman/bin/sdkman-init.sh\" ]] && source \"\$HOME/.sdkman/bin/sdkman-init.sh\""
