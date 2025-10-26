@@ -2,7 +2,6 @@
 
 # Remove Fedora Workstation apps
 apps_to_remove=(
-    abrt-desktop
     baobab
     evince
     fedora-bookmarks
