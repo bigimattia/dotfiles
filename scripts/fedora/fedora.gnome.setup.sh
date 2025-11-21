@@ -14,7 +14,6 @@ apps_to_remove=(
     gnome-connections
     gnome-contacts
     gnome-font-viewer
-    gnome-initial-setup
     gnome-logs
     gnome-maps
     gnome-text-editor
@@ -65,6 +64,8 @@ user_flatpak_apps=(
     com.visualstudio.code
     com.heroicgameslauncher.hgl
     com.google.Chrome
+    org.chromium.Chromium
+    com.google.AndroidStudio
 )
 
 echo "Do you want to remove the default Fedora Workstation apps? (y/n)"
