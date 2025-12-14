@@ -26,3 +26,13 @@ if [[ "$response" == "y" ]]; then
 else
     echo "Keybinds not set."
 fi
+
+
+read -p "Do you want to remove display <Super>+<P> binding (this usually breaks workflow pretty badly, media key will keep working as usual)? (y/n): " displayBindResponse
+if [[ "$displayBindResponse" == "y" ]]; then
+    gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
+
+    echo "Workspaces keybinds correctly set!"
+else
+    echo "Keybinds not set."
+fi

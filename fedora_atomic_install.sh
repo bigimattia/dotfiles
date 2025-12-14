@@ -30,6 +30,7 @@ runScript() {
     source "$script_path"
 }
 
+
 # Ask if the user wants to remove Fedora Flatpak repository and add Flathub
 echo "Do you want to remove the Fedora Flatpak repository and add Flathub? (y/n)"
 read -r configure_flatpak
@@ -48,18 +49,13 @@ DE=$(echo "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')
 if [[ "$DE" == *"gnome"* ]]; then
     echo "You are running GNOME Desktop Environment."
     runScript scripts/gnome.setup.sh
-    runScript scripts/fedora/fedora.gnome.setup.sh
-elif [[ "$DE" == *"kde"* ]]; then
-    echo "You are running KDE Desktop Environment."
-    runScript scripts/fedora/fedora.kde.setup.sh
-elif [[ "$DE" == *"cosmic"* ]]; then
-    echo "You are running COSMIC Desktop Environment."
-    runScript scripts/fedora/fedora.cosmic.setup.sh
+    runScript scripts/fedora/fedora.silverblue.setup.sh
 else
     echo "You are running an unsupported Desktop Environment."
     exit 1
 fi
 
+#65x keyboard fix
 # Ask if the user wants to set up the 65% keyboard FN keys fix
 echo "Since some 65% keyboards defaults to fn keys"
 echo "triggering special keys instead of F1-F12 keys,"
@@ -67,14 +63,14 @@ echo "Do you want to set up the 65% keyboard FN keys fix? (y/n)"
 echo "[skip if you don't have a 65% keyboard]"
 read -r set_65x_fn_keys
 if [[ "$set_65x_fn_keys" == "y" ]]; then
-    runScript scripts/65x-keyboard.setup.sh
+    sudo rpm-ostree kargs --append-if-missing='hid_apple.fnmode=0'
 fi
 
 # Ask if the user wants to install zsh
 echo "Do you want to install and setup zsh? (y/n)"
 read -r install_zsh
 if [[ "$install_zsh" == "y" ]]; then
-    sudo dnf install zsh -y
+    sudo rpm-ostree install zsh -y
 
     # Ask if the user wants to set zsh as the default shell
     echo "Do you want to set zsh as the default shell? (y/n)"
@@ -84,22 +80,11 @@ if [[ "$install_zsh" == "y" ]]; then
     fi
 
     # Run the install.sh script
-    runScript scripts/old-zsh.setup.sh
+    runScript scripts/zsh.setup.sh
 fi
 
 # Ask if the user wants to set up git
 runScript scripts/git.setup.sh
-
-# Ask if the user wants to install docker
-echo "Do you want to install and setup docker? (y/n)"
-read -r install_docker
-if [[ "$install_docker" == "y" ]]; then
-	sudo dnf install docker-cli containerd docker-compose
-	sudo systemctl restart docker.socket
-	sudo groupadd docker
-	sudo usermod -aG docker $USER
-	newgrp docker
-fi
 
 # Ask if the user wants to enable multiprofile Bluetooth
 echo "Do you want to enable multiprofile Bluetooth? (y/n)"
@@ -113,15 +98,16 @@ if [[ "$enable_multiprofile_bt" == "y" ]]; then
     echo "Multiprofile Bluetooth has been enabled."
 fi
 
-# Ask to hide grub at startup
-echo "Do you want to hide grub at start? (y/n)"
-read -r hide_grub
-if [[ "$hide_grub" == "y" ]]; then
-    sudo grub2-editenv - set menu_auto_hide=1
-fi
+# TODO: find a working implementation for silverblue
+## Ask to hide grub at startup
+# echo "Do you want to hide grub at start? (y/n)"
+# read -r hide_grub
+# if [[ "$hide_grub" == "y" ]]; then
+#     sudo grub2-editenv - set menu_auto_hide=1
+# fi
 
 # Update the system
-sudo dnf upgrade -y
+sudo rpm-ostree upgrade -y
 
 # Ask if the user wants to reboot the system now
 echo "Do you want to reboot the system now? (y/n)"
