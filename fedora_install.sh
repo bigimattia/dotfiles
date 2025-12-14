@@ -84,7 +84,7 @@ if [[ "$install_zsh" == "y" ]]; then
     fi
 
     # Run the install.sh script
-    runScript scripts/old-zsh.setup.sh
+    runScript scripts/zsh.setup.sh
 fi
 
 # Ask if the user wants to set up git

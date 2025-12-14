@@ -47,7 +47,7 @@ if [[ "$install_zsh" == "y" ]]; then
     fi
 
     # Run the zsh.sh script
-    runScript scripts/old-zsh.setup.sh
+    runScript scripts/zsh.setup.sh
 fi
 
 
