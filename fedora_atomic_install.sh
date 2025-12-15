@@ -76,7 +76,8 @@ if [[ "$install_zsh" == "y" ]]; then
     echo "Do you want to set zsh as the default shell? (y/n)"
     read -r set_zsh_default
     if [[ "$set_zsh_default" == "y" ]]; then
-        chsh -s $(which zsh)
+        #chsh -s $(which zsh)
+        sudo usermod --shell /usr/bin/zsh ${USER}
     fi
 
     # Run the install.sh script
@@ -98,13 +99,12 @@ if [[ "$enable_multiprofile_bt" == "y" ]]; then
     echo "Multiprofile Bluetooth has been enabled."
 fi
 
-# TODO: find a working implementation for silverblue
-## Ask to hide grub at startup
-# echo "Do you want to hide grub at start? (y/n)"
-# read -r hide_grub
-# if [[ "$hide_grub" == "y" ]]; then
-#     sudo grub2-editenv - set menu_auto_hide=1
-# fi
+# Ask to hide grub at startup
+echo "Do you want to hide grub at start? (y/n)"
+read -r hide_grub
+if [[ "$hide_grub" == "y" ]]; then
+    sudo grub2-editenv - set menu_auto_hide=1 menu_hide_ok=1
+fi
 
 # Update the system
 sudo rpm-ostree upgrade -y
