@@ -24,5 +24,16 @@ fi
 
 echo '# nvm (toolbox only)' >> ~/.zsh/plugins.zsh
 echo 'if [[ -n "$TOOLBOX_CONTAINER" ]]; then' >> ~/.zsh/plugins.zsh
-echo '  source "$ZSH/plugins/nvm.zsh"' >> ~/.zsh/plugins.zsh
+    # echo '  source "$ZSH/plugins/nvm.zsh"' >> ~/.zsh/plugins.zsh
+    echo "# mise" >> ~/.zsh/plugins.zsh
+    echo "eval \"\$(/~/.local/bin/mise activate zsh)\"" >> ~/.zsh/plugins.zsh
 echo 'fi' >> ~/.zsh/plugins.zsh
+
+# Ask to install mise
+# echo "Do you want to install mise? (y/n)"
+# read -r install mise
+# if [[ "$install_mise" == "y" ]]; then
+#     curl https://mise.run | sh
+# fi
+
+

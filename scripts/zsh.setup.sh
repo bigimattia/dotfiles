@@ -20,11 +20,12 @@ nvmUrl="https://raw.githubusercontent.com/nvm-sh/nvm/$nvmVersion/install.sh"
 CUSTOMIZED_INSTALL=false
 INSTALL_AUTOSUGGESTIONS=false
 INSTALL_TABHISTORYCOMPLETION=false
-INSTALL_NVM=false
+#INSTALL_NVM=false
+INSTALL_MISE=false
 INSTALL_THEME_MINIMAL=false
 INSTALL_STARSHIP=false
 INSTALL_FIRACODE=false
-INSTALL_SDKMAN=false
+#INSTALL_SDKMAN=false
 
 read -p "Do you want a customized zsh install? (y/n) [selecting n will only install zsh and autosuggestions]" -n 1 -r
 echo
@@ -42,10 +43,16 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         INSTALL_TABHISTORYCOMPLETION=true
     fi
 
-    read -p "Do you want to install nvm? (y/n) " -n 1 -r
+    # read -p "Do you want to install nvm? (y/n) " -n 1 -r
+    # echo
+    # if [[ $REPLY =~ ^[Yy]$ ]]; then
+    #     INSTALL_NVM=true
+    # fi
+
+    read -p "Do you want to install mise? (y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        INSTALL_NVM=true
+        INSTALL_MISE=true
     fi
 
     read -p "Do you want to install Starship? (y/n - n will prompt for minimal theming, leave empty to skip theming entirely) " -n 1 -r
@@ -65,11 +72,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         fi
     fi
 
-    read -p "Do you want to install sdkman? (y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        INSTALL_SDKMAN=true
-    fi
+    # read -p "Do you want to install sdkman? (y/n) " -n 1 -r
+    # echo
+    # if [[ $REPLY =~ ^[Yy]$ ]]; then
+    #     INSTALL_SDKMAN=true
+    # fi
 fi
 
 if [[ $INSTALL_AUTOSUGGESTIONS == true || $CUSTOMIZED_INSTALL == false ]]; then
@@ -83,14 +90,25 @@ if [[ $INSTALL_AUTOSUGGESTIONS == true || $CUSTOMIZED_INSTALL == false ]]; then
     fi   
 fi
 
-if [[ $INSTALL_NVM == true || $CUSTOMIZED_INSTALL == false ]]; then
-    echo "# nvm" >> ~/.zsh/plugins.zsh
-    echo "source \$ZSH/plugins/nvm.zsh" >> ~/.zsh/plugins.zsh
+# if [[ $INSTALL_NVM == true || $CUSTOMIZED_INSTALL == false ]]; then
+#     echo "# nvm" >> ~/.zsh/plugins.zsh
+#     echo "source \$ZSH/plugins/nvm.zsh" >> ~/.zsh/plugins.zsh
 
-    if [ -d ~/.nvm ]; then
-        echo "NVM is already installed."
+#     if [ -d ~/.nvm ]; then
+#         echo "NVM is already installed."
+#     else
+#         PROFILE=/dev/null bash -c "curl -o- $nvmUrl | bash"
+#     fi
+# fi
+
+if [[ $INSTALL_MISE == true || $CUSTOMIZED_INSTALL == false ]]; then
+    echo "# mise" >> ~/.zsh/plugins.zsh
+    echo "eval \"\$(~/.local/bin/mise activate zsh)\"" >> ~/.zsh/plugins.zsh
+
+    if [ -d ~/.local/share/mise ]; then
+        echo "MISE is probably already installed."
     else
-        PROFILE=/dev/null bash -c "curl -o- $nvmUrl | bash"
+        curl https://mise.run | sh
     fi
 fi
 
@@ -166,15 +184,15 @@ if [[ $INSTALL_TABHISTORYCOMPLETION == true ]]; then
     echo "# END - Command completion with arrow-key" >> ~/.zsh/plugins/history.zsh
 fi
 
-if [[ $INSTALL_SDKMAN == true ]]; then
-    echo "#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!" >> ~/.zshrc
-    echo "export SDKMAN_DIR=\"\$HOME/.sdkman\"" >> ~/.zshrc
-    echo "[[ -s \"\$HOME/.sdkman/bin/sdkman-init.sh\" ]] && source \"\$HOME/.sdkman/bin/sdkman-init.sh\""
-    echo -en '\n' >> ~/.zshrc
+# if [[ $INSTALL_SDKMAN == true ]]; then
+#     echo "#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!" >> ~/.zshrc
+#     echo "export SDKMAN_DIR=\"\$HOME/.sdkman\"" >> ~/.zshrc
+#     echo "[[ -s \"\$HOME/.sdkman/bin/sdkman-init.sh\" ]] && source \"\$HOME/.sdkman/bin/sdkman-init.sh\""
+#     echo -en '\n' >> ~/.zshrc
 
-    if [ -d ~/.sdkman ]; then
-        echo "Sdkman is already installed."
-    else
-	curl -s "https://get.sdkman.io?rcupdate=false" | bash
-    fi
-fi
+#     if [ -d ~/.sdkman ]; then
+#         echo "Sdkman is already installed."
+#     else
+# 	curl -s "https://get.sdkman.io?rcupdate=false" | bash
+#     fi
+# fi
