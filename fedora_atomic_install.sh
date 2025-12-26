@@ -50,6 +50,12 @@ if [[ "$DE" == *"gnome"* ]]; then
     echo "You are running GNOME Desktop Environment."
     runScript scripts/gnome.setup.sh
     runScript scripts/fedora/fedora.silverblue.setup.sh
+elif [[ "$DE" == *"kde"* ]]; then
+    echo "You are running KDE Desktop Environment."
+    runScript scripts/fedora/fedora.kinoite.setup.sh
+# elif [[ "$DE" == *"cosmic"* ]]; then
+#     echo "You are running COSMIC Desktop Environment."
+#     runScript scripts/fedora/fedora.cosmic.setup.sh
 else
     echo "You are running an unsupported Desktop Environment."
     exit 1
