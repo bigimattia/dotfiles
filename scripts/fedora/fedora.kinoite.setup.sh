@@ -8,43 +8,30 @@ apps_to_remove=(
 )
 
 fedora_flatpaks=(
-    org.gnome.Calendar
-    org.gnome.Calculator
-    org.gnome.Characters
-    org.gnome.clocks
-    org.gnome.Connections
-    org.gnome.Contacts
-    org.gnome.font-viewer
-    org.gnome.Logs
-    org.gnome.Maps
-    org.gnome.Papers
-    org.gnome.TextEditor
-    org.gnome.Weather
+    org.kde.elisa
+    org.kde.kmines
+    org.kde.kmahjongg
+    org.kde.skanpage
+    org.kde.gwenview
+    org.kde.kolourpaint
+    org.kde.krdc
+    org.kde.kcalc
+    org.kde.okular
 )
 
 system_flatpaks=(
-    org.gnome.baobab
-    org.gnome.Calendar
-    org.gnome.Calculator
-    org.gnome.clocks
-    org.gnome.Connections
-    org.gnome.Contacts
-    org.gnome.Decibels
-    org.gnome.font-viewer
-    org.gnome.Loupe
-    org.gnome.Maps
-    org.gnome.Showtime
-    org.gnome.SimpleScan
-    org.gnome.TextEditor
-    org.gnome.Weather
+    org.kde.elisa
+    org.kde.skanpage
+    org.kde.gwenview
+    org.kde.kolourpaint
+    org.kde.krdc
+    org.kde.kcalc
+    org.kde.okular
 
     com.google.Chrome
-
 )
 
 user_flatpak_apps=(
-    com.github.tchx84.Flatseal
-    com.mattjakeman.ExtensionManager
     org.fedoraproject.MediaWriter
     org.gimp.GIMP
     org.kde.kdenlive
