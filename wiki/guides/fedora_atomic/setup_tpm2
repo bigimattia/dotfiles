@@ -1,0 +1,29 @@
+This guide will only work for fedora atomic distro. Please execute code at your own risk.
+
+Prerequisites:
+0. Have a luks partition
+
+1. find luks partition (not crypt, the part one containing it)
+lsblk -o NAME,UUID,TYPE,MOUNTPOINT
+
+2. check if your pc supports safe boot + tpm2
+
+Setup tpm2:
+
+1
+sudo rpm-ostree initramfs --enable
+
+2
+systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+1+4+5+7 /dev/nvme1n1p3
+
+3
+sudo nano /etc/crypttab
+
+luks-<leave_the_id> UUID=<leave_the_id> none discard,tpm2-device=auto,tpm2-pcrs=0+1+4+5+7
+
+4.
+
+rpm-ostree initramfs-etc --force-sync
+
+
+5. reboot and enjoy TPM2.0 working :)
