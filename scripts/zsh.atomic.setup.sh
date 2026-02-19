@@ -38,3 +38,11 @@ fi
 #     echo "# mise" >> ~/.zsh/plugins.zsh
 #     echo "eval \"\$(/~/.local/bin/mise activate zsh)\"" >> ~/.zsh/plugins.zsh
 # echo 'fi' >> ~/.zsh/plugins.zsh
+
+# Ask to setup Bitwarden ssh agent (flatpak)
+echo "Do you want to setup Bitwarden ssh agent (flatpak) ? (y/n)"
+read -r bitwarden_ssh_agent
+if [[ "$bitwarden_ssh_agent" == "y" ]]; then
+    echo "# Bitwarden ssh agent - Flatpak"  >> ~/.zsh/exports.zsh
+    echo "export SSH_AUTH_SOCK=~/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"  >> ~/.zsh/exports.zsh
+fi
