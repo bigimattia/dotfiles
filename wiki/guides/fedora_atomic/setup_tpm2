@@ -14,12 +14,12 @@ Setup tpm2:
 sudo rpm-ostree initramfs --enable
 
 2
-systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+1+4+5+7 /dev/nvme1n1p3
+sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+1+7 /dev/nvme1n1p3
 
 3
 sudo nano /etc/crypttab
 
-luks-<leave_the_id> UUID=<leave_the_id> none discard,tpm2-device=auto,tpm2-pcrs=0+1+4+5+7
+luks-<leave_the_id> UUID=<leave_the_id> none discard,tpm2-device=auto,tpm2-pcrs=0+1+7
 
 4.
 
