@@ -27,3 +27,12 @@ rpm-ostree initramfs-etc --force-sync
 
 
 5. reboot and enjoy TPM2.0 working :)
+
+
+
+
+If for whatever reason you need to re-enroll:
+
+wipe slot (you can find the slot using sudo cryptsetup luksDump /dev/nvme1n1p3)
+
+sudo systemd-cryptenroll --wipe-slot=tpm2 /dev/nvme1n1p3
