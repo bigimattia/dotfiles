@@ -48,6 +48,14 @@ else
     exit 1
 fi
 
+# Ask if the user wants to fix wine gaming on suse
+echo "Do you want to enable selinuxuser_execmod? This allows you to run games through wine. They will all crash otherwise (y/n)"
+read -r selinuxuser_execmod
+if [[ "$selinuxuser_execmod" == "y" ]]; then
+    sudo setsebool -P selinuxuser_execmod 1
+fi
+
+
 # Ask if the user wants to install zsh
 echo "Do you want to install and setup zsh? (y/n)"
 read -r install_zsh
