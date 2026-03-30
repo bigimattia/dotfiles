@@ -37,6 +37,15 @@ patterns=(
     "office"
 )
 
+flatpak_apps=(
+    "org.gnome.Calculator"
+    "org.gnome.clocks"
+    "org.gnome.Contacts"
+    "org.gnome.Maps"
+    "org.gnome.TextEditor"
+    "org.gnome.Weather"
+)
+
 echo "This script will remove and lock several GNOME packages and patterns to prevent reinstallation."
 echo "Do you wish to continue? (y/n)"
 read -r response
@@ -64,4 +73,15 @@ for p in "${patterns[@]}"; do
     sudo zypper addlock "pattern:$p"
 done
 
-echo "Cleanup and locking completed successfully."
+echo "Cleanup and locking completed."
+
+echo "Do you want to install the removed apps as Flatpaks (system-wide)? (y/n)"
+read -r install_flatpaks
+if [[ "$install_flatpaks" == "y" ]]; then
+    # Ensure flathub is added
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    for app in "${flatpak_apps[@]}"; do
+        sudo flatpak install --system flathub "$app" -y
+    done
+    echo "Flatpak applications installed successfully."
+fi
