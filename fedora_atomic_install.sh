@@ -37,6 +37,7 @@ read -r configure_flatpak
 if [[ "$configure_flatpak" == "y" ]]; then
     # Remove Fedora Flatpak repository if present
     flatpak remote-delete fedora
+    flatpak remote-delete fedora-testing
     # Add Flathub repository if not already present
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     # user as well
@@ -76,7 +77,7 @@ fi
 echo "Do you want to install and setup zsh? (y/n)"
 read -r install_zsh
 if [[ "$install_zsh" == "y" ]]; then
-    sudo rpm-ostree install zsh -y
+    rpm-ostree install zsh
 
     # Ask if the user wants to set zsh as the default shell
     echo "Do you want to set zsh as the default shell? (y/n)"
@@ -112,8 +113,51 @@ if [[ "$hide_grub" == "y" ]]; then
     sudo grub2-editenv - set menu_auto_hide=1 menu_hide_ok=1
 fi
 
+# Ask to remove firefox and bookmarks
+echo "Do you want to remove firefox and bookmarks? (y/n)"
+read -r override_firefox
+if [[ "override_firefox" == "y" ]]; then
+   #remove firefox and bookmarks
+    rpm-ostree override remove firefox firefox-langpacks fedora-bookmarks
+fi
+
+# tpm2 support
+echo "Do you want to setup tpm2 support? (y/n)"
+read -r tpm2_support
+if [[ "tpm2_support" == "y" ]]; then
+    echo "--- Current Block Devices ---"
+    lsblk -o NAME,UUID,TYPE,SIZE,FSTYPE
+    echo "-----------------------------"
+    echo "Enter the partition name (e.g., /dev/nvme1n1p3):"
+    read -r part_name
+    echo "Enter the UUID for $part_name:"
+    read -r part_uuid
+    if [[ -b "$part_name" ]]; then
+        echo "Enabling initramfs for rpm-ostree..."
+        sudo rpm-ostree initramfs --enable
+
+        echo "Enrolling TPM2..."
+        sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+1+7 "$part_name"
+
+        echo "Updating /etc/crypttab..."
+        # This looks for the line starting with luks-<your_uuid> and appends the TPM options
+        # It targets the end of the line ($) to ensure it appends after 'discard'
+        sudo sed -i "/luks-$part_uuid/ s/$/,tpm2-device=auto,tpm2-pcrs=0+1+7/" /etc/crypttab
+
+        echo "Updated /etc/crypttab entry:"
+        grep "$part_uuid" /etc/crypttab
+
+        echo "Force sync initramfs..."
+        rpm-ostree initramfs-etc --force-sync
+
+        echo "Done! Please reboot to verify the TPM unlock."
+    else
+        echo "Error: Device $part_name not found. Aborting TPM setup."
+    fi
+fi
+
 # Update the system
-sudo rpm-ostree upgrade -y
+rpm-ostree upgrade
 
 # Ask if the user wants to reboot the system now
 echo "Do you want to reboot the system now? (y/n)"

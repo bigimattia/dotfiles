@@ -38,7 +38,6 @@ user_flatpak_apps=(
     com.valvesoftware.Steam
     com.discordapp.Discord
     org.localsend.localsend_app
-    com.spotify.Client
     com.bitwarden.desktop
     com.visualstudio.code
     com.heroicgameslauncher.hgl
