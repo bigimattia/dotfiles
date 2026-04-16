@@ -82,6 +82,7 @@ fi
 if [[ $INSTALL_AUTOSUGGESTIONS == true || $CUSTOMIZED_INSTALL == false ]]; then
     echo "# zsh-autosuggestions" >> ~/.zsh/plugins.zsh
     echo "source \$ZSH/plugins/zsh-autosuggestions.zsh" >> ~/.zsh/plugins.zsh
+    echo "export ZSH_AUTOSUGGEST_STRATEGY=(history completion)" >> ~/.zsh/exports.zsh
 
     if [ -d ~/.zsh/zsh-autosuggestions ]; then
         echo "zsh-autosuggestions is already installed."
