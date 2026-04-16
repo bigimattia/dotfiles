@@ -15,6 +15,8 @@ fi
 
 echo "# zsh-autosuggestions" >> ~/.zsh/plugins.zsh
 echo "source \$ZSH/plugins/zsh-autosuggestions.zsh" >> ~/.zsh/plugins.zsh
+echo "# zsh-autosuggestions" >> ~/.zsh/exports.zsh
+echo "export ZSH_AUTOSUGGEST_STRATEGY=(history completion)" >> ~/.zsh/exports.zsh
 
 if [ -d ~/.zsh/zsh-autosuggestions ]; then
     echo "zsh-autosuggestions is already installed."
