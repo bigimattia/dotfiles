@@ -37,9 +37,9 @@ if [[ "$DE" == *"gnome"* ]]; then
     echo "You are running GNOME Desktop Environment."
     runScript scripts/gnome.setup.sh
     runScript scripts/opensuse/opensuse.tumbleweed.gnome.setup.sh
-# elif [[ "$DE" == *"kde"* ]]; then
-#     echo "You are running KDE Desktop Environment."
-#     runScript scripts/fedora/fedora.kde.setup.sh
+elif [[ "$DE" == *"kde"* ]]; then
+    echo "You are running KDE Desktop Environment."
+    runScript scripts/opensuse/opensuse.tumbleweed.kde.setup.sh
 # elif [[ "$DE" == *"cosmic"* ]]; then
 #     echo "You are running COSMIC Desktop Environment."
 #     runScript scripts/fedora/fedora.cosmic.setup.sh
@@ -53,6 +53,7 @@ echo "Do you want to enable selinuxuser_execmod? This allows you to run games th
 read -r selinuxuser_execmod
 if [[ "$selinuxuser_execmod" == "y" ]]; then
     sudo setsebool -P selinuxuser_execmod 1
+    #@TODO use instead :  sudo zypper install selinux-policy-targeted-gaming
 fi
 
 
