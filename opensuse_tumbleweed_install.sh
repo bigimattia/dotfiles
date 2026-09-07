@@ -52,7 +52,7 @@ fi
 echo "Do you want to enable selinuxuser_execmod? This allows you to run games through wine. They will all crash otherwise (y/n)"
 read -r selinuxuser_execmod
 if [[ "$selinuxuser_execmod" == "y" ]]; then
-    sudo setsebool -P selinuxuser_execmod 1
+    sudo zypper in selinux-policy-targeted-gaming
     #@TODO use instead :  sudo zypper install selinux-policy-targeted-gaming
 fi
 
